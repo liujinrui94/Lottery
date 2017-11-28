@@ -1,0 +1,76 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowAnimationStyle">@style/ActivityAnimation</item>
+        <item name="android:windowSoftInputMode">adjustUnspecified|stateHidden</item>
+        <item name="android:configChanges">orientation|keyboardHidden|screenSize</item>
+    </style>
+    <!--Activity Animation-->
+    <style name="ActivityAnimation" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/activity_into_from_right</item>
+        <item name="android:activityOpenExitAnimation">@anim/activity_out_to_left</item>
+        <item name="android:activityCloseEnterAnimation">@anim/activity_into_from_left</item>
+        <item name="android:activityCloseExitAnimation">@anim/activity_out_to_right</item>
+    </style>
+    <style name="CommonDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+    <style name="tab_main_activity_radio_button">
+        <!-- 水平居中 -->
+        <item name="android:gravity">center</item>
+        <!-- 字体样式 -->
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:drawablePadding">2dp</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:textAppearance">@style/tab_home_font_bg</item>
+        <item name="android:button">@null</item>
+        <item name="android:background">@mipmap/ic_tab_bottom_bg</item>
+    </style>
+    <style name="tab_button">
+        <item name="android:textSize">12.0dip</item>
+        <item name="android:textColor">@drawable/menu_tab_name_selector</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:background">@drawable/client_bg</item>
+        <item name="android:layout_width">0.0dip</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">0.70000005dip</item>
+        <item name="android:layout_marginRight">0.70000005dip</item>
+        <item name="android:layout_marginBottom">3dip</item>
+        <item name="android:button">@null</item>
+        <item name="android:layout_weight">1.0</item>
+        <item name="android:singleLine">true</item>
+    </style>
+    <!-- 程序主页的tab字体样式 -->
+    <style name="tab_home_font_bg">
+        <!-- 字体颜色 -->
+        <item name="android:textColor">@drawable/selector_tab_menu_text_color</item>
+        <!-- 字体加粗 -->
+        <item name="android:textStyle">normal</item>
+        <!-- 字体大小 -->
+        <item name="android:textSize">14.0sp</item>
+        <!-- 文字过长的省略显示 -->
+        <item name="android:ellipsize">marquee</item>
+        <!-- 当文本不能正常现实的时候后面用..表示 -->
+        <item name="android:singleLine">true</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <!--progress dialog theme-->
+    <style name="BaseProgressDialog" parent="Theme.AppCompat.Dialog">
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="colorAccent">@color/colorPrimary</item>
+    </style>
+</resources>

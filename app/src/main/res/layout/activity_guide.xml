@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bezier="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        layout="@layout/top_toolbar"
+        android:visibility="gone"></include>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/guide_vp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <!-- 这个布局是下面显示的小圆点的布局，其中ImageView的数量要与上面RelativeLayout的数量对应 -->
+    <com.caipiao.framework.widget.BezierRoundView
+        android:id="@+id/guide_bezier"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="25dp"
+        bezier:color_bez="#FFFFFFFF"
+        bezier:color_stroke="#ffaaaaaa"
+        bezier:radius="5dp" />
+
+    <Button
+        android:id="@+id/guide_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/guide_bezier"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="100dp"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:text="立即进入"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:visibility="invisible" />
+</RelativeLayout>
