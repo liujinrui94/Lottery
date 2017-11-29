@@ -26,14 +26,14 @@ import com.lottery.widget.SnackBarUtils;
 import butterknife.BindView;
 
 
-public abstract class BaseActivity extends AppCompatActivity implements NetEventInterface, View.OnClickListener {
+public  class BaseActivity extends AppCompatActivity implements NetEventInterface {
 
     private int netMobile;//网络状态
     private NetBroadcastReceiver netBroadcastReceiver;//监控网络的广播
     private BaseProgressDialog progressDialog;
     private Snackbar snackbar;
 
-
+    private Context context;
     protected AppApplication app;
     @BindView(R.id.top_toolbar)
      Toolbar toolbar;
@@ -47,9 +47,8 @@ public abstract class BaseActivity extends AppCompatActivity implements NetEvent
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        context=this;
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        initView();
-        initData();
         app.getInstance().addActivity(this);
         AppLogger.i(getRunningActivityName(this) + " is running");
     }
@@ -65,6 +64,15 @@ public abstract class BaseActivity extends AppCompatActivity implements NetEvent
             winParams.flags &= ~bits;
         }
         win.setAttributes(winParams);
+    }
+
+
+    public Context getContext() {
+        return context;
+    }
+
+    public void setContext(Context context) {
+        this.context = context;
     }
 
     protected void initToolbar(String title, final BaseActivity context, boolean back) {
@@ -88,15 +96,6 @@ public abstract class BaseActivity extends AppCompatActivity implements NetEvent
         String contextString = mContext.toString();
         return contextString.substring(contextString.lastIndexOf(".") + 1, contextString.indexOf("@"));
     }
-
-    protected abstract void initView();
-
-
-    protected abstract void initData();
-
-    @Override
-    public abstract void onClick(View view);
-
 
     /**
      * 显示加载对话框

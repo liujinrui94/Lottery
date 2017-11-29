@@ -8,10 +8,6 @@ import android.util.AttributeSet;
 import android.widget.TabHost;
 
 public class MenuTabHost extends TabHost {
-	public final static String TAB_TAG_CHAT = "chat";
-	public final static String TAB_TAG_CONTACTS = "contacts";
-	public final static String TAB_TAG_APP_CENTER = "appcenter";
-	public final static String TAB_TAG_CIRCLES = "circle";
 
 	private List<MenuTabItem> menuTabItemList = new ArrayList<MenuTabItem>();
 
@@ -40,11 +36,6 @@ public class MenuTabHost extends TabHost {
 
 	/**
      * 添加底部菜单
-     * 
-     * @param id 底部菜单唯一标示.
-     * @param intent 底部菜单对应的intent.
-     * @param drawable 底部菜单对应图标.
-     * @param name 底部菜单名称.
      * 
      */
 	public void addMenuItem(MenuTabItem tabItem){
