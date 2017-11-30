@@ -5,7 +5,7 @@ import com.lottery.BuildConfig;
 
 public class AppLogger
 {
-	protected static final String TAG = "<JIZHANG-Log>";
+	protected static final String TAG = "<LOTTERY-Log>";
 
 	private AppLogger()
 	{

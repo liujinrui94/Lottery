@@ -46,7 +46,6 @@ public class SplashActivity extends BaseActivity {
     }
 
     protected void initView() {
-        setView(false);
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         boolean firstTime = sharedPreferences.getBoolean(Constant.LOGIN, true);
         if (firstTime) {
@@ -71,8 +70,9 @@ public class SplashActivity extends BaseActivity {
 
     }
 
+    protected void initData() {
 
-
+    }
 
 
     private void intoSplashActivity() {

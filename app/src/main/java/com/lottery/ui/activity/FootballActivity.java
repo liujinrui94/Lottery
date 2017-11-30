@@ -10,14 +10,17 @@ import android.view.View;
 
 import com.lottery.R;
 import com.lottery.base.BaseActivity;
-import com.lottery.ui.activity.web.MessageInfoActivity;
+import com.lottery.constant.Constant;
 import com.lottery.ui.activity.web.RunlotteryActivity;
 import com.lottery.utils.AppLogger;
+import com.lottery.utils.ToastUtils;
 import com.tencent.smtt.sdk.DownloadListener;
 import com.tencent.smtt.sdk.WebChromeClient;
 import com.tencent.smtt.sdk.WebSettings;
 import com.tencent.smtt.sdk.WebView;
 import com.tencent.smtt.sdk.WebViewClient;
+
+import java.util.HashMap;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -25,20 +28,15 @@ import butterknife.OnClick;
 /**
  * @author: LiuJinrui
  * @email: liujinrui@qdcftx.com
- * @time: 2017/11/28 17:24
+ * @time: 2017/11/29 8:43
  * @description:
  */
-public class WebViewActivity extends BaseActivity implements View.OnClickListener {
+public class FootballActivity extends BaseActivity implements View.OnClickListener {
 
 
     @BindView(R.id.activity_all_web_view)
     WebView webview;
     private String URL;
-
-    String javascript = "javascript:function hideOther() {"
-            + "if(null!= document.getElementsByClassName('cpm-main-nav')) {document.getElementsByClassName('cpm-main-nav')[0].style.display = 'none';}\n" +
-            "if(null!= document.getElementsByClassName('txt')) {document.getElementsByClassName('txt')[0].innerHTML = '暂无比赛';}\n" +
-            "}";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,12 +45,23 @@ public class WebViewActivity extends BaseActivity implements View.OnClickListene
         progressShow();
         URL = getIntent().getStringExtra("url");
         AppLogger.i(URL + "");
-        initToolbar("赛事查看", this, false);
+        initToolbar("开奖资讯", this, false);
         initView();
     }
 
 
     protected void initView() {
+
+
+        getToolbar().setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (webview.canGoBack()) {
+                    webview.goBack();
+                }
+            }
+        });
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             webview.getSettings().setMixedContentMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
         }
@@ -68,24 +77,33 @@ public class WebViewActivity extends BaseActivity implements View.OnClickListene
         webview.setWebChromeClient(chromeClient);
         webview.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
         webview.setDownloadListener(new MyWebViewDownLoadListener());
-
     }
 
     private WebViewClient client = new WebViewClient() {
         // 防止加载网页时调起系统浏览器
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            Intent intent =new Intent(getContext(),MessageInfoActivity.class);
-            intent.putExtra("url",url);
-            intent.putExtra("title","赛事详情");
-            startActivity(intent);
+//            view.loadUrl(url);
+            Intent mIntent = new Intent(FootballActivity.this, RunlotteryActivity.class);
+            mIntent.putExtra("url", url);
+            mIntent.putExtra("title","资讯详情");
+            startActivity(mIntent);
             return true;
         }
 
         @Override
         public void onPageFinished(WebView view, String url) {
             super.onPageFinished(view, url);
+            webview.setVisibility(View.GONE);
+            //编写 javaScript方法
+            String javascript = "javascript:function hideOther() {"
+                    + "if(null!=document.getElementsByClassName('vMod_topBar')[0]){document.getElementsByClassName('vMod_topBar')[0].style.display = 'none';}" +
+                    "if(null!=document.getElementsByClassName('vFooter2')[0]){document.getElementsByClassName('vFooter2')[0].style.display = 'none';}"+
+                    "if(null!=document.getElementsByClassName('vLottery_info_buttons')[0]){document.getElementsByClassName('vLottery_info_buttons')[0].style.display = 'none';}"+
+                    "}";
+            //创建方法
             view.loadUrl(javascript);
             view.loadUrl("javascript:hideOther();");
+            webview.setVisibility(View.VISIBLE);
             progressCancel();
         }
     };
@@ -107,9 +125,7 @@ public class WebViewActivity extends BaseActivity implements View.OnClickListene
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.action_bar_left_iv:
-                if (webview.canGoBack()) {
-                    webview.goBack();
-                }
+
                 break;
             default:
                 break;
@@ -135,23 +151,10 @@ public class WebViewActivity extends BaseActivity implements View.OnClickListene
 
     }
 
-
-    //点击返回上一页面而不是退出浏览器
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK && webview.canGoBack()) {
-            webview.goBack();
-            return true;
-        }
-
-        return super.onKeyDown(keyCode, event);
-    }
-
     @Override
     public void onDestroy() {
         super.onDestroy();
         webview.stopLoading();
-        webview.clearHistory();
         webview.destroy();
     }
 }

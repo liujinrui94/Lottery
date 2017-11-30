@@ -27,6 +27,13 @@ public class Constant {
 //    public static final String ZHANJI = "http://vipc.cn";
 //    public static final String ZHANJI = "https://daren.vipc.cn/";
     public static final String ZHANJI = "https://jc.vipc.cn/?channel=10001&fr=p0101";
+    public static final String OKKAIJIANG = "https://qs.888.qq.com/m_qq/lot.live.html?vb2ctag=4_2089_3_2834#lot.live.index=all";
+    public static final String KAIJIANGZHIBO="https://vipc.cn/live/fucai/2017-11-22?fr=shareToWeixinTimeline#/lt";
+    //双色球奖金计算器
+    public static final String JIANGJINJISUAN="https://vipc.cn/ssq/calculator?fr=shareToWeixinTimeline";
+    //直播
+    public static final String ZHIBO="https://vipc.cn/lottery/ssq";
 
-    public static final String OKKAIJIANG = "https://qs.888.qq.com/m_qq/mqq2.info.html?plg_nld=1&plg_vkey=1&plg_auth=1&plg_uin=1&_wv=1&purse=1&plg_nld=1&purseNew=1&_vacf=qwv&vb2ctag=4_2067_3_2696&plg_auth=1";
+//    public static final String ZHIBO="https://vipc.cn/live";
+
 }

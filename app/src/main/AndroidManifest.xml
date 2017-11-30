@@ -37,6 +37,7 @@
         </activity>
 
         <activity android:name=".ui.activity.SplashActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -46,7 +47,15 @@
         <activity android:name=".ui.activity.GuideActivity"></activity>
         <activity android:name=".ui.activity.OfficalNetActivity"></activity>
         <activity android:name=".ui.activity.TabMainActivity"></activity>
-
+        <activity android:name=".ui.activity.FootballActivity">
+        </activity>
+        <activity android:name=".ui.activity.WebViewActivity"></activity>
+        <activity android:name=".ui.activity.web.RunlotteryActivity">
+        </activity>
+        <activity android:name=".ui.activity.web.MessageActivity">
+        </activity>
+        <activity android:name=".ui.activity.web.MessageInfoActivity">
+        </activity>
 
         <receiver
             android:name=".receiver.MyReceiver"

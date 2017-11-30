@@ -7,11 +7,15 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
@@ -24,9 +28,10 @@ import com.lottery.widget.BaseProgressDialog;
 import com.lottery.widget.SnackBarUtils;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 
-public  class BaseActivity extends AppCompatActivity implements NetEventInterface {
+public abstract class BaseActivity extends AppCompatActivity implements NetEventInterface {
 
     private int netMobile;//网络状态
     private NetBroadcastReceiver netBroadcastReceiver;//监控网络的广播
@@ -41,16 +46,20 @@ public  class BaseActivity extends AppCompatActivity implements NetEventInterfac
     @BindView(R.id.top_toolbar_tv)
      TextView textTitle;
 
-    private boolean view = true;
-
+    private View snack_bar_view;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AppLogger.i(getRunningActivityName(this) + " is running");
         context=this;
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         app.getInstance().addActivity(this);
-        AppLogger.i(getRunningActivityName(this) + " is running");
+    }
+
+
+    public Toolbar getToolbar() {
+        return toolbar;
     }
 
     @TargetApi(19)
@@ -82,16 +91,32 @@ public  class BaseActivity extends AppCompatActivity implements NetEventInterfac
             toolbar.setNavigationIcon(R.mipmap.ic_arrow_back_white);
         }
         setSupportActionBar(toolbar);
-
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+      toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                app.finishActivity(context);
+                finish();
             }
         });
     }
 
+    @Override
+    public void setContentView(@LayoutRes int layoutResID) {
+        super.setContentView(layoutResID);
+        ButterKnife.bind(this);
+    }
 
+    @Override
+    public void setContentView(View view) {
+        super.setContentView(view);
+
+        ButterKnife.bind(this);
+    }
+
+    @Override
+    public void setContentView(View view, ViewGroup.LayoutParams params) {
+        super.setContentView(view, params);
+        ButterKnife.bind(this);
+    }
     private String getRunningActivityName(Context mContext) {
         String contextString = mContext.toString();
         return contextString.substring(contextString.lastIndexOf(".") + 1, contextString.indexOf("@"));
@@ -149,17 +174,13 @@ public  class BaseActivity extends AppCompatActivity implements NetEventInterfac
     @Override
     public void onNetChange(int netMobile) {
         this.netMobile = netMobile;
-        if (view) {
             isNetConnect();
-        }
     }
 
-    public void setView(boolean view) {
-        this.view = view;
-    }
 
     private void isNetConnect() {
-        if (snackbar == null) {
+        if (snackbar == null&&textTitle!=null) {
+
             snackbar = SnackBarUtils.indefiniteSnackbar(textTitle, "无网络连接，请检查网络设置");
             switch (netMobile) {
                 case 1://wifi

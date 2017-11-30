@@ -1,4 +1,4 @@
-package com.lottery.ui.activity;
+package com.lottery.ui.activity.web;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -10,8 +10,7 @@ import android.view.View;
 
 import com.lottery.R;
 import com.lottery.base.BaseActivity;
-import com.lottery.ui.activity.web.MessageInfoActivity;
-import com.lottery.ui.activity.web.RunlotteryActivity;
+import com.lottery.ui.activity.WebViewActivity;
 import com.lottery.utils.AppLogger;
 import com.tencent.smtt.sdk.DownloadListener;
 import com.tencent.smtt.sdk.WebChromeClient;
@@ -25,20 +24,15 @@ import butterknife.OnClick;
 /**
  * @author: LiuJinrui
  * @email: liujinrui@qdcftx.com
- * @time: 2017/11/28 17:24
+ * @time: 2017/11/30 17:24
  * @description:
  */
-public class WebViewActivity extends BaseActivity implements View.OnClickListener {
+public class MessageActivity extends BaseActivity implements View.OnClickListener {
 
 
     @BindView(R.id.activity_all_web_view)
     WebView webview;
     private String URL;
-
-    String javascript = "javascript:function hideOther() {"
-            + "if(null!= document.getElementsByClassName('cpm-main-nav')) {document.getElementsByClassName('cpm-main-nav')[0].style.display = 'none';}\n" +
-            "if(null!= document.getElementsByClassName('txt')) {document.getElementsByClassName('txt')[0].innerHTML = '暂无比赛';}\n" +
-            "}";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,8 +40,7 @@ public class WebViewActivity extends BaseActivity implements View.OnClickListene
         setContentView(R.layout.activity_webview_all);
         progressShow();
         URL = getIntent().getStringExtra("url");
-        AppLogger.i(URL + "");
-        initToolbar("赛事查看", this, false);
+        initToolbar("预测资讯", this, false);
         initView();
     }
 
@@ -74,9 +67,9 @@ public class WebViewActivity extends BaseActivity implements View.OnClickListene
     private WebViewClient client = new WebViewClient() {
         // 防止加载网页时调起系统浏览器
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            Intent intent =new Intent(getContext(),MessageInfoActivity.class);
-            intent.putExtra("url",url);
-            intent.putExtra("title","赛事详情");
+            Intent intent = new Intent(getContext(), MessageInfoActivity.class);
+            intent.putExtra("url", url);
+            intent.putExtra("title", "资讯");
             startActivity(intent);
             return true;
         }
@@ -84,8 +77,6 @@ public class WebViewActivity extends BaseActivity implements View.OnClickListene
         @Override
         public void onPageFinished(WebView view, String url) {
             super.onPageFinished(view, url);
-            view.loadUrl(javascript);
-            view.loadUrl("javascript:hideOther();");
             progressCancel();
         }
     };
@@ -93,11 +84,6 @@ public class WebViewActivity extends BaseActivity implements View.OnClickListene
     private WebChromeClient chromeClient = new WebChromeClient() {
         @Override
         public void onProgressChanged(WebView webView, int i) {
-            if (i != 100) {
-                webview.setVisibility(View.GONE);
-            } else {
-                webview.setVisibility(View.VISIBLE);
-            }
             super.onProgressChanged(webView, i);
         }
     };

@@ -1,4 +1,4 @@
-package com.lottery.ui.activity;
+package com.lottery.ui.activity.web;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -10,9 +10,6 @@ import android.view.View;
 
 import com.lottery.R;
 import com.lottery.base.BaseActivity;
-import com.lottery.ui.activity.web.MessageInfoActivity;
-import com.lottery.ui.activity.web.RunlotteryActivity;
-import com.lottery.utils.AppLogger;
 import com.tencent.smtt.sdk.DownloadListener;
 import com.tencent.smtt.sdk.WebChromeClient;
 import com.tencent.smtt.sdk.WebSettings;
@@ -25,20 +22,17 @@ import butterknife.OnClick;
 /**
  * @author: LiuJinrui
  * @email: liujinrui@qdcftx.com
- * @time: 2017/11/28 17:24
+ * @time: 2017/11/30 17:32
  * @description:
  */
-public class WebViewActivity extends BaseActivity implements View.OnClickListener {
+public class MessageInfoActivity extends BaseActivity implements View.OnClickListener {
 
 
     @BindView(R.id.activity_all_web_view)
     WebView webview;
     private String URL;
 
-    String javascript = "javascript:function hideOther() {"
-            + "if(null!= document.getElementsByClassName('cpm-main-nav')) {document.getElementsByClassName('cpm-main-nav')[0].style.display = 'none';}\n" +
-            "if(null!= document.getElementsByClassName('txt')) {document.getElementsByClassName('txt')[0].innerHTML = '暂无比赛';}\n" +
-            "}";
+    private String title;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,13 +40,20 @@ public class WebViewActivity extends BaseActivity implements View.OnClickListene
         setContentView(R.layout.activity_webview_all);
         progressShow();
         URL = getIntent().getStringExtra("url");
-        AppLogger.i(URL + "");
-        initToolbar("赛事查看", this, false);
+        if (null != getIntent().getStringExtra("title")) {
+            title = getIntent().getStringExtra("title");
+        }
+        initToolbar(title, this, true);
         initView();
     }
 
-
     protected void initView() {
+        getToolbar().setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             webview.getSettings().setMixedContentMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
         }
@@ -67,25 +68,20 @@ public class WebViewActivity extends BaseActivity implements View.OnClickListene
         webview.setWebViewClient(client);
         webview.setWebChromeClient(chromeClient);
         webview.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
-        webview.setDownloadListener(new MyWebViewDownLoadListener());
 
     }
 
     private WebViewClient client = new WebViewClient() {
         // 防止加载网页时调起系统浏览器
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            Intent intent =new Intent(getContext(),MessageInfoActivity.class);
-            intent.putExtra("url",url);
-            intent.putExtra("title","赛事详情");
-            startActivity(intent);
-            return true;
+            progressShow();
+            view.loadUrl(url);
+            return false;
         }
 
         @Override
         public void onPageFinished(WebView view, String url) {
             super.onPageFinished(view, url);
-            view.loadUrl(javascript);
-            view.loadUrl("javascript:hideOther();");
             progressCancel();
         }
     };
@@ -93,11 +89,6 @@ public class WebViewActivity extends BaseActivity implements View.OnClickListene
     private WebChromeClient chromeClient = new WebChromeClient() {
         @Override
         public void onProgressChanged(WebView webView, int i) {
-            if (i != 100) {
-                webview.setVisibility(View.GONE);
-            } else {
-                webview.setVisibility(View.VISIBLE);
-            }
             super.onProgressChanged(webView, i);
         }
     };
@@ -116,25 +107,6 @@ public class WebViewActivity extends BaseActivity implements View.OnClickListene
         }
 
     }
-
-    private class MyWebViewDownLoadListener implements DownloadListener {
-
-        @Override
-
-        public void onDownloadStart(String url, String userAgent, String contentDisposition, String mimetype,
-
-                                    long contentLength) {
-            Uri uri = Uri.parse(url);
-
-            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-
-            startActivity(intent);
-
-        }
-
-
-    }
-
 
     //点击返回上一页面而不是退出浏览器
     @Override

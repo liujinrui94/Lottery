@@ -97,7 +97,6 @@ public class AppApplication extends Application {
     public void AppExit() {
         try {
             finishAllActivity();
-
         } catch (Exception e) {
             e.printStackTrace();
         }finally {

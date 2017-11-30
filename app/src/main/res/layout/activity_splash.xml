@@ -5,5 +5,7 @@
     android:background="@mipmap/four"
     android:orientation="vertical">
 
-
+<include layout="@layout/top_toolbar"
+    android:visibility="gone"
+    ></include>
 </LinearLayout>
