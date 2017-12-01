@@ -45,7 +45,7 @@ public class TabMainActivity extends TabActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tab_main_activity);
 
-        mContext=this;
+        mContext = this;
         setupIntent();
     }
 
@@ -53,13 +53,12 @@ public class TabMainActivity extends TabActivity {
         mWorkIntent = new Intent(this, MessageActivity.class);
         mWorkIntent.putExtra("url", Constant.DALETOU);
         mChatIntent = new Intent(this, FootballActivity.class);
-        mChatIntent.putExtra("url",Constant.ZHIBO);
+        mChatIntent.putExtra("url", Constant.ZHIBO);
         mContactsIntent = new Intent(this, WebViewActivity.class);
-        mContactsIntent.putExtra("url",Constant.OKKAIJIANG);
-        mCircleIntent = new Intent(this, OfficalNetActivity.class);
+        mContactsIntent.putExtra("url", Constant.OKKAIJIANG);
+        mCircleIntent = new Intent(this, MineActivity.class);
         initTabhost();
     }
-
 
 
     public void initTabhost() {

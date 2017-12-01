@@ -12,5 +12,10 @@ public class Common {
      */
     public static final String FINISH_LOGIN = "finish";
 
+    /**
+     * 是否关闭应用
+     */
+    public static final String VOICE = "voice";
+
 
 }

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/ic_feedback_bg"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/feedback_action_bar"
+        layout="@layout/top_toolbar" />
+
+    <EditText
+        android:id="@+id/feedback_opinion_et"
+        style="@style/text_gray_13dp"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@id/feedback_action_bar"
+        android:layout_margin="10dp"
+        android:background="@drawable/shape_white_background_8"
+        android:gravity="left|top"
+        android:hint="您好,请输入您的意见"
+        android:maxLength="400"
+        android:padding="15dp"
+        android:scrollbars="vertical"
+        android:textColorHint="@color/hintTextColor" />
+
+    <TextView
+        android:id="@+id/feedback_input_number_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="12dp"
+        android:layout_alignBottom="@+id/feedback_img"
+        android:layout_marginRight="1dp"
+        android:layout_toLeftOf="@+id/feedback_img"
+        android:layout_toStartOf="@+id/feedback_img"
+        android:gravity="center"
+        android:text="400"
+        android:textColor="@color/hintTextColor"
+        android:textSize="10dp"
+        android:textStyle="italic"
+        tools:ignore="SpUsage" />
+
+    <ImageView
+        android:id="@+id/feedback_img"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_alignBottom="@id/feedback_opinion_et"
+        android:layout_alignEnd="@+id/feedback_opinion_et"
+        android:layout_alignRight="@+id/feedback_opinion_et"
+        android:layout_marginBottom="2dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginRight="2dp"
+        android:src="@mipmap/ic_feedback_bottom" />
+
+
+    <com.lottery.widget.CustomEditText
+        android:id="@+id/feedback_contact_information_et"
+        style="@style/text_gray_15dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/feedback_opinion_et"
+        android:layout_margin="10dp"
+        android:background="@drawable/shape_white_background_8"
+        android:gravity="center_vertical"
+        android:hint="@string/feedback_contact_information_hint"
+        android:inputType="phone"
+        android:paddingLeft="16dp"
+        android:scrollbars="vertical"
+        android:textColorHint="@color/hintTextColor"
+        app:editType="numberPhone"
+        tools:ignore="SpUsage" />
+
+    <Button
+        android:id="@+id/feedback_submit_btn"
+        style="@style/text_gray_18dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/feedback_contact_information_et"
+        android:layout_margin="10dp"
+        android:background="@drawable/selector_button_theme_8"
+        android:scrollbars="vertical"
+        android:text="提交" />
+
+</RelativeLayout>

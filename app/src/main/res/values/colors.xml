@@ -17,4 +17,9 @@
     <color name="status_bar_color">#E7D5B6</color>
     <color name="orange_E34F1B">#E34F1B</color>
     <color name="grayTextColor">#777777</color>
+
+    <!--黑色字体-->
+    <color name="blackTextColor">#323232</color>
+    <!--白色字体-->
+    <color name="hintTextColor">#CCCCCC</color>
 </resources>

@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
@@ -72,4 +72,23 @@
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="colorAccent">@color/colorPrimary</item>
     </style>
+
+    <style name="text_black_15dp">
+        <item name="android:textColor">@color/blackTextColor</item>
+        <item name="android:textSize" tools:ignore="SpUsage">15dp</item>
+    </style>
+
+    <style name="text_gray_13dp">
+        <item name="android:textColor">@color/grayTextColor</item>
+        <item name="android:textSize" tools:ignore="SpUsage">13dp</item>
+    </style>
+    <style name="text_gray_15dp">
+        <item name="android:textColor">@color/grayTextColor</item>
+        <item name="android:textSize" tools:ignore="SpUsage">15dp</item>
+    </style>
+    <style name="text_gray_18dp">
+        <item name="android:textColor">@color/bg_grey_dark</item>
+        <item name="android:textSize" tools:ignore="SpUsage">18dp</item>
+    </style>
+
 </resources>

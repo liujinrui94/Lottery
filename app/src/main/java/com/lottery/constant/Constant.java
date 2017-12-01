@@ -5,7 +5,9 @@ public class Constant {
 
 //    public static final String Url = "http://www.08cpapp.com/Lottery_server/check_and_get_url.php?type=android&show_url=20178837";
 
-    public static final String Url = "http://118.184.101.237/Lottery_server/public/kaiguan/Interface/getValue?type=android&appid=w100113";
+//    public static final String Url = "http://118.184.101.237/Lottery_server/public/kaiguan/Interface/getValue?type=android&appid=w100113";
+
+    public static final String Url = "http://www.08cpapp.com/Lottery_server/check_and_get_url.php?type=android&appid=20178837";
 
 
 

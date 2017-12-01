@@ -35,7 +35,6 @@ public class RunlotteryActivity extends BaseActivity implements View.OnClickList
     WebView webview;
     private String URL;
     private String title;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +44,7 @@ public class RunlotteryActivity extends BaseActivity implements View.OnClickList
         if (null != getIntent().getStringExtra("title")) {
             title = getIntent().getStringExtra("title");
         }
+        AppLogger.i(URL + "");
         initToolbar(title, this, true);
         initView();
     }
@@ -96,9 +96,9 @@ public class RunlotteryActivity extends BaseActivity implements View.OnClickList
                     "if(document.getElementsByClassName('vFooter2')[0] != null) {document.getElementsByClassName('vFooter2')[0].style.display = 'none';}" +
                     "if(document.getElementsByClassName('vMod_functionBar')[0] != null) {document.getElementsByClassName('vMod_functionBar')[0].style.display = 'none';}" +
                     "if(document.getElementsByClassName('vMod_tapBar')[0] != null) {document.getElementsByClassName('vMod_tapBar')[0].style.display = 'none';}" +
-                    "if(document.getElementsByClassName('vMod_tabBar')[0] != null) {document.getElementsByClassName('vMod_tabBar')[0].style.display = 'none';}" +
-                    "if(document.getElementsByClassName('vMod_header_more')[0] != null) {document.getElementsByClassName('vMod_header_more')[0].style.display = 'none';}" +
-                    "}";
+                    "if(document.getElementsByClassName('vMod_tabBar')[0] != null) {document.getElementsByClassName('vMod_tabBar')[0].style.display = 'none';}"+
+                    "if(document.getElementsByClassName('vMod_header_more')[0] != null) {document.getElementsByClassName('vMod_header_more')[0].style.display = 'none';}"+
+            "}";
             //创建方法
             view.loadUrl(javascript);
             view.loadUrl("javascript:hideOther();");
@@ -139,7 +139,6 @@ public class RunlotteryActivity extends BaseActivity implements View.OnClickList
 
         }
     }
-
     @Override
     public void onDestroy() {
         super.onDestroy();

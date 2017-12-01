@@ -54,6 +54,7 @@ public class SplashActivity extends BaseActivity {
             editor.apply();
             Intent intent = new Intent(SplashActivity.this, GuideActivity.class);
             startActivity(intent);
+            finish();
             return;
         } else {
             boolean open = sharedPreferences.getBoolean(Common.FINISH_LOGIN, true);
@@ -67,14 +68,7 @@ public class SplashActivity extends BaseActivity {
                 return;
             }
         }
-
     }
-
-    protected void initData() {
-
-    }
-
-
     private void intoSplashActivity() {
         new Handler().postDelayed(new Runnable() {
             @Override
