@@ -27,7 +27,7 @@ public class BaseProgressDialog extends ProgressDialog {
 
     private void init() {
         //设置不可取消，点击其他区域不能取消，实际中可以抽出去封装供外包设置
-        setCancelable(false);
+        setCancelable(true);
         setCanceledOnTouchOutside(false);
 
         setContentView(R.layout.dialog_base_progress);

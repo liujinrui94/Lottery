@@ -64,9 +64,10 @@ public class BaseWebViewActivity extends AppCompatActivity implements NetEventIn
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         app.getInstance().addActivity(this);
         setContentView(R.layout.activity_base_web_view);
+        progressShow();
     }
 
-    protected void initWebView(String url, WebViewClient client, WebChromeClient chromeClient) {
+    protected void initWebView(String url, WebViewClient client) {
         webView.getSettings().setUseWideViewPort(true);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setLoadWithOverviewMode(true);
@@ -84,19 +85,6 @@ public class BaseWebViewActivity extends AppCompatActivity implements NetEventIn
 
     public Toolbar getToolbar() {
         return toolbar;
-    }
-
-    @TargetApi(19)
-    private void setTranslucentStatus(boolean on) {
-        Window win = getWindow();
-        WindowManager.LayoutParams winParams = win.getAttributes();
-        final int bits = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
-        if (on) {
-            winParams.flags |= bits;
-        } else {
-            winParams.flags &= ~bits;
-        }
-        win.setAttributes(winParams);
     }
 
     public WebView getWebView() {
@@ -230,7 +218,13 @@ public class BaseWebViewActivity extends AppCompatActivity implements NetEventIn
 
         }
     }
+    private WebChromeClient chromeClient = new WebChromeClient() {
+        @Override
+        public void onProgressChanged(WebView webView, int i) {
 
+            super.onProgressChanged(webView, i);
+        }
+    };
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

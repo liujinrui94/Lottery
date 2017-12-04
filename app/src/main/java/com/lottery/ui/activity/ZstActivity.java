@@ -39,7 +39,7 @@ public class ZstActivity extends BaseWebViewActivity {
             back = true;
         }
         initToolbar(title, this, back);
-        initWebView(url, client, chromeClient);
+        initWebView(url, client);
     }
 
 
@@ -63,10 +63,4 @@ public class ZstActivity extends BaseWebViewActivity {
         }
     };
 
-    private WebChromeClient chromeClient = new WebChromeClient() {
-        @Override
-        public void onProgressChanged(WebView webView, int i) {
-            super.onProgressChanged(webView, i);
-        }
-    };
 }

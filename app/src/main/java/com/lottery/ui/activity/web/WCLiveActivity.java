@@ -30,21 +30,20 @@ public class WCLiveActivity extends BaseWebViewActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        progressShow();
+
         if (null != getIntent().getStringExtra("url")) {
             url = getIntent().getStringExtra("url");
             title = getIntent().getStringExtra("title");
             back = true;
         }
         initToolbar(title, WCLiveActivity.this, back);
-        initWebView(url, client, chromeClient);
+        initWebView(url, client);
     }
 
 
     private WebViewClient client = new WebViewClient() {
         // 防止加载网页时调起系统浏览器
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
-
             Intent mIntent = new Intent(getContext(), WebViewActivity.class);
             mIntent.putExtra("url", url);
             mIntent.putExtra("title", "资讯详情");
@@ -63,11 +62,5 @@ public class WCLiveActivity extends BaseWebViewActivity {
         }
     };
 
-    private WebChromeClient chromeClient = new WebChromeClient() {
-        @Override
-        public void onProgressChanged(WebView webView, int i) {
 
-            super.onProgressChanged(webView, i);
-        }
-    };
 }

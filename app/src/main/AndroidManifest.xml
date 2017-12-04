@@ -36,42 +36,35 @@
 
         </activity>
 
-        <activity android:name=".ui.activity.SplashActivity">
+        <activity
+            android:name=".ui.activity.SplashActivity"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activity.GuideActivity"></activity>
+        <activity android:name=".ui.activity.GuideActivity"
+            android:launchMode="singleTask"></activity>
         <activity android:name=".ui.activity.OfficalNetActivity"></activity>
-        <activity android:name=".ui.activity.TabMainActivity"></activity>
-        <activity android:name=".ui.activity.FootballActivity">
-        </activity>
+        <activity android:name=".ui.activity.TabMainActivity"
+            android:launchMode="singleTask"></activity>
+        <activity android:name=".ui.activity.FootballActivity"></activity>
         <activity android:name=".ui.activity.WebViewActivity"></activity>
-        <activity android:name=".ui.activity.web.RunlotteryActivity">
-        </activity>
-        <activity android:name=".ui.activity.web.MessageActivity">
-        </activity>
-        <activity android:name=".ui.activity.web.MessageInfoActivity">
-        </activity>
-        <activity android:name=".ui.activity.MineActivity">
-        </activity>
-        <activity android:name=".ui.activity.UserFeedbackActivity">
-        </activity>
-        <activity android:name=".ui.activity.web.CommissionsActivity">
-        </activity>
-        <activity android:name=".ui.activity.LotteryLobbyActivity">
-        </activity>
-        <activity android:name=".ui.activity.web.WCLiveActivity">
-        </activity>
-        <activity android:name=".ui.activity.web.ZouShiTuActivity">
-        </activity>
-        <activity android:name=".ui.activity.ZstActivity">
-        </activity>
-        <activity android:name=".ui.activity.web.NoJsWebViewActivity">
-        </activity>
-
+        <activity android:name=".ui.activity.web.RunlotteryActivity"></activity>
+        <activity android:name=".ui.activity.web.MessageActivity"></activity>
+        <activity android:name=".ui.activity.web.MessageInfoActivity"></activity>
+        <activity android:name=".ui.activity.MineActivity"></activity>
+        <activity android:name=".ui.activity.UserFeedbackActivity"></activity>
+        <activity android:name=".ui.activity.web.CommissionsActivity"></activity>
+        <activity android:name=".ui.activity.LotteryLobbyActivity"></activity>
+        <activity android:name=".ui.activity.web.WCLiveActivity"></activity>
+        <activity android:name=".ui.activity.web.ZouShiTuActivity"></activity>
+        <activity android:name=".ui.activity.ZstActivity"></activity>
+        <activity android:name=".ui.activity.web.NoJsWebViewActivity"></activity>
+        <activity android:name=".ui.activity.KnowledgeActivity"></activity>
+        <activity android:name=".ui.activity.web.KnowledgeNextActivity"></activity>
 
         <receiver
             android:name=".receiver.MyReceiver"

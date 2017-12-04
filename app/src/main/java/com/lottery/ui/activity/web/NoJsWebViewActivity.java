@@ -37,14 +37,13 @@ public class NoJsWebViewActivity extends BaseWebViewActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        progressShow();
         if (null != getIntent().getStringExtra("NoJsUrl")) {
             url = getIntent().getStringExtra("NoJsUrl");
             title = getIntent().getStringExtra("NoJsTitle");
             back = true;
         }
         initToolbar(title, this, back);
-        initWebView(url, client, chromeClient);
+        initWebView(url, client);
         getToolbar().setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,11 +73,4 @@ public class NoJsWebViewActivity extends BaseWebViewActivity {
         }
     };
 
-    private WebChromeClient chromeClient = new WebChromeClient() {
-        @Override
-        public void onProgressChanged(WebView webView, int i) {
-
-            super.onProgressChanged(webView, i);
-        }
-    };
 }

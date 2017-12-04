@@ -57,7 +57,7 @@ public class TabMainActivity extends TabActivity {
         mWorkIntent.putExtra("url",Constant.ZHIBO);
         mChatIntent = new Intent(this, ZstActivity.class);
         mContactsIntent = new Intent(this, NoJsWebViewActivity.class);
-        mCircleIntent = new Intent(this, MineActivity.class);
+        mCircleIntent = new Intent(this, KnowledgeActivity.class);
         initTabhost();
     }
 

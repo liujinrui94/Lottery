@@ -36,7 +36,6 @@ public class Constant {
     public static final String QIULEIZHIBO = "http://live.m.500.com/center/football?from=app_bet";
     //
     public static final String ZST="http://m.500.com/datachart/";
-
     //彩票知识
     public static final String ZHISHI="http://m.500.com/info/zhishi/";
 
