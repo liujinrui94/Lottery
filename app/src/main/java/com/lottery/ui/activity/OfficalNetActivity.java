@@ -107,7 +107,6 @@ public class OfficalNetActivity extends Activity {
         if (mWebview != null) {
             mWebview.loadDataWithBaseURL(null, "", "text/html", "utf-8", null);
             mWebview.clearHistory();
-
             ((ViewGroup) mWebview.getParent()).removeView(mWebview);
             mWebview.destroy();
             mWebview = null;

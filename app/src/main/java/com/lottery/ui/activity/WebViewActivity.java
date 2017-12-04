@@ -7,17 +7,17 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.KeyEvent;
 import android.view.View;
+import android.webkit.DownloadListener;
+import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 import com.lottery.R;
 import com.lottery.base.BaseActivity;
 import com.lottery.ui.activity.web.MessageInfoActivity;
 import com.lottery.ui.activity.web.RunlotteryActivity;
 import com.lottery.utils.AppLogger;
-import com.tencent.smtt.sdk.DownloadListener;
-import com.tencent.smtt.sdk.WebChromeClient;
-import com.tencent.smtt.sdk.WebSettings;
-import com.tencent.smtt.sdk.WebView;
-import com.tencent.smtt.sdk.WebViewClient;
 
 import butterknife.BindView;
 import butterknife.OnClick;

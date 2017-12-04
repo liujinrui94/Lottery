@@ -22,4 +22,10 @@
     <color name="blackTextColor">#323232</color>
     <!--白色字体-->
     <color name="hintTextColor">#CCCCCC</color>
+    <!--提示字体-->
+    <color name="whiteTextColor">#FAFAFA</color>
+    <!--默认间隔线-->
+    <color name="colorDividers">#E8E8E8</color>
+    <!--背景色-->
+    <color name="backgroundColor">#F5F5F5</color>
 </resources>

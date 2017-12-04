@@ -44,17 +44,12 @@ public class RunlotteryActivity extends BaseActivity implements View.OnClickList
         if (null != getIntent().getStringExtra("title")) {
             title = getIntent().getStringExtra("title");
         }
-        AppLogger.i(URL + "");
         initToolbar(title, this, true);
         initView();
     }
 
 
     protected void initView() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            webview.getSettings().setMixedContentMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
-        }
-
         getToolbar().setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,7 +58,6 @@ public class RunlotteryActivity extends BaseActivity implements View.OnClickList
                 }
             }
         });
-
         webview.loadUrl(URL);
         webview.getSettings().setUseWideViewPort(true);
         webview.getSettings().setJavaScriptEnabled(true);
@@ -110,11 +104,11 @@ public class RunlotteryActivity extends BaseActivity implements View.OnClickList
     private WebChromeClient chromeClient = new WebChromeClient() {
         @Override
         public void onProgressChanged(WebView webView, int i) {
-            if (i != 100) {
-                webview.setVisibility(View.GONE);
-            } else {
-                webview.setVisibility(View.VISIBLE);
-            }
+//            if (i != 100) {
+//                webview.setVisibility(View.GONE);
+//            } else {
+//                webview.setVisibility(View.VISIBLE);
+//            }
             super.onProgressChanged(webView, i);
         }
     };

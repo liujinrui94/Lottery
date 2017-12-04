@@ -12,8 +12,6 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -26,13 +24,21 @@ import com.lottery.receiver.NetBroadcastReceiver;
 import com.lottery.utils.AppLogger;
 import com.lottery.widget.BaseProgressDialog;
 import com.lottery.widget.SnackBarUtils;
+import com.tencent.smtt.sdk.WebChromeClient;
+import com.tencent.smtt.sdk.WebSettings;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebViewClient;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-
-public abstract class BaseActivity extends AppCompatActivity implements NetEventInterface {
-
+/**
+ * @author: LiuJinrui
+ * @email: liujinrui@qdcftx.com
+ * @time: 2017/12/1 15:33
+ * @description:
+ */
+public class BaseWebViewActivity extends AppCompatActivity implements NetEventInterface {
     private int netMobile;//网络状态
     private NetBroadcastReceiver netBroadcastReceiver;//监控网络的广播
     private BaseProgressDialog progressDialog;
@@ -41,18 +47,39 @@ public abstract class BaseActivity extends AppCompatActivity implements NetEvent
     private Context context;
     protected AppApplication app;
     @BindView(R.id.top_toolbar)
-     Toolbar toolbar;
+    Toolbar toolbar;
 
     @BindView(R.id.top_toolbar_tv)
-     TextView textTitle;
+    TextView textTitle;
+
+    @BindView(R.id.activity_base_web_view)
+    WebView webView;
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         AppLogger.i(getRunningActivityName(this) + " is running");
-        context=this;
+        context = this;
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         app.getInstance().addActivity(this);
+        setContentView(R.layout.activity_base_web_view);
     }
+
+    protected void initWebView(String url, WebViewClient client, WebChromeClient chromeClient) {
+        webView.getSettings().setUseWideViewPort(true);
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.getSettings().setLoadWithOverviewMode(true);
+        webView.setHorizontalScrollBarEnabled(false);
+        webView.setVerticalScrollBarEnabled(false);
+        webView.setWebViewClient(client);
+        webView.setWebChromeClient(chromeClient);
+        webView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+        webView.loadUrl(url);
+        webView.setVisibility(View.GONE);
+
+    }
+
 
 
     public Toolbar getToolbar() {
@@ -72,6 +99,13 @@ public abstract class BaseActivity extends AppCompatActivity implements NetEvent
         win.setAttributes(winParams);
     }
 
+    public WebView getWebView() {
+        return webView;
+    }
+
+    public void setWebView(WebView webView) {
+        this.webView = webView;
+    }
 
     public Context getContext() {
         return context;
@@ -81,14 +115,14 @@ public abstract class BaseActivity extends AppCompatActivity implements NetEvent
         this.context = context;
     }
 
-    protected void initToolbar(String title, final BaseActivity context, boolean back) {
+    protected void initToolbar(String title, final BaseWebViewActivity context, boolean back) {
         toolbar.setTitle(title);
         toolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
         if (back) {
             toolbar.setNavigationIcon(R.mipmap.ic_arrow_back_white);
         }
         setSupportActionBar(toolbar);
-      toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
@@ -114,6 +148,7 @@ public abstract class BaseActivity extends AppCompatActivity implements NetEvent
         super.setContentView(view, params);
         ButterKnife.bind(this);
     }
+
     private String getRunningActivityName(Context mContext) {
         String contextString = mContext.toString();
         return contextString.substring(contextString.lastIndexOf(".") + 1, contextString.indexOf("@"));
@@ -159,24 +194,16 @@ public abstract class BaseActivity extends AppCompatActivity implements NetEvent
         }
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if (netBroadcastReceiver != null) {
-            //注销广播
-            unregisterReceiver(netBroadcastReceiver);
-        }
-    }
 
     @Override
     public void onNetChange(int netMobile) {
         this.netMobile = netMobile;
-            isNetConnect();
+        isNetConnect();
     }
 
 
     private void isNetConnect() {
-        if (snackbar == null&&textTitle!=null) {
+        if (snackbar == null && textTitle != null) {
 
             snackbar = SnackBarUtils.indefiniteSnackbar(textTitle, "无网络连接，请检查网络设置");
             switch (netMobile) {
@@ -208,5 +235,14 @@ public abstract class BaseActivity extends AppCompatActivity implements NetEvent
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (netBroadcastReceiver != null) {
+            //注销广播
+            unregisterReceiver(netBroadcastReceiver);
+        }
+        super.onDestroy();
     }
 }

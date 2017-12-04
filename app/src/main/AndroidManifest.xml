@@ -28,7 +28,7 @@
     <application
         android:name=".base.AppApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/app_pk10"
+        android:icon="@mipmap/icon"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -37,7 +37,6 @@
         </activity>
 
         <activity android:name=".ui.activity.SplashActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -62,6 +61,17 @@
         </activity>
         <activity android:name=".ui.activity.web.CommissionsActivity">
         </activity>
+        <activity android:name=".ui.activity.LotteryLobbyActivity">
+        </activity>
+        <activity android:name=".ui.activity.web.WCLiveActivity">
+        </activity>
+        <activity android:name=".ui.activity.web.ZouShiTuActivity">
+        </activity>
+        <activity android:name=".ui.activity.ZstActivity">
+        </activity>
+        <activity android:name=".ui.activity.web.NoJsWebViewActivity">
+        </activity>
+
 
         <receiver
             android:name=".receiver.MyReceiver"

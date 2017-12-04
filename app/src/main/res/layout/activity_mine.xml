@@ -12,7 +12,7 @@
         android:layout_height="50dip"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20.0dip"
-        android:src="@mipmap/app_pk10" />
+        android:src="@mipmap/icon" />
 
     <TextView
         style="@style/text_black_15dp"

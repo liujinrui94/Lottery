@@ -1,6 +1,7 @@
 package com.lottery.base;
 
 import android.app.Application;
+import android.support.v7.app.AppCompatActivity;
 
 
 import com.tencent.smtt.sdk.QbSdk;
@@ -14,7 +15,7 @@ public class AppApplication extends Application {
 
     public static AppApplication instance;
 
-    public Stack<BaseActivity> allActivity = new Stack<>();
+    public Stack<AppCompatActivity> allActivity = new Stack<>();
 
 
     public AppApplication() {
@@ -56,14 +57,14 @@ public class AppApplication extends Application {
         return instance;
     }
 
-    public void addActivity(BaseActivity activity) {
+    public void addActivity(AppCompatActivity activity) {
         if (allActivity == null) {
-            allActivity = new Stack<BaseActivity>();
+            allActivity = new Stack<AppCompatActivity>();
         }
         allActivity.add(activity);
     }
 
-    public void finishActivity(BaseActivity activity) {
+    public void finishActivity(AppCompatActivity activity) {
         if (activity != null) {
             allActivity.remove(activity);
         }
