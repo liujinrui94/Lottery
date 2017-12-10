@@ -22,7 +22,7 @@ public class ZstActivity extends BaseWebViewActivity {
 
 
     private String url = "http://m.500.com/datachart/";
-    private String title = "开奖";
+    private String title = "走势图";
     private boolean back = false;
     private String javascript = "javascript:function hideOther() {"
             + "if(null!= document.getElementById('uiHead')) {document.getElementById('uiHead').style.display = 'none';}\n" +

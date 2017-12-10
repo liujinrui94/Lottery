@@ -3,6 +3,7 @@ package com.lottery.ui.activity.web;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
 
 import com.lottery.base.BaseWebViewActivity;
@@ -20,7 +21,11 @@ public class KnowledgeNextActivity extends BaseWebViewActivity {
     private String intent_url;
     private String intent_title;
 
-    private boolean fist=false;
+    private String javascript = "javascript:function hideOther() {"
+            + "if(document.getElementsByClassName('ui-head-r')[0] != null) {document.getElementsByClassName('ui-head-r')[0].style.display = 'none';}"
+            + "if(document.getElementsByClassName('index-top')[0] != null) {document.getElementsByClassName('index-top')[0].style.display = 'none';}"
+            + "if(document.getElementsByClassName('load-more')[0] != null) {document.getElementsByClassName('load-more')[0].style.display = 'none';}"
+            +"}";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -29,6 +34,7 @@ public class KnowledgeNextActivity extends BaseWebViewActivity {
             intent_url = getIntent().getStringExtra(KnowledgeActivity.KNOWLEDGE_URL);
             intent_title = getIntent().getStringExtra(KnowledgeActivity.KNOWLEDGE_TITLE);
         }
+        getToolbar().setVisibility(View.GONE);
         initToolbar(intent_title, this, true);
         initWebView(intent_url, client);
     }
@@ -36,21 +42,15 @@ public class KnowledgeNextActivity extends BaseWebViewActivity {
     private WebViewClient client = new WebViewClient() {
         // 防止加载网页时调起系统浏览器
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            if (fist){
-                Intent mIntent = new Intent(KnowledgeNextActivity.this, KnowledgeNextActivity.class);
-                mIntent.putExtra(KnowledgeActivity.KNOWLEDGE_URL, url);
-                mIntent.putExtra(KnowledgeActivity.KNOWLEDGE_TITLE, intent_title);
-                startActivity(mIntent);
-            }else {
-                view.loadUrl(url);
-                fist=true;
-            }
+            view.loadUrl(url);
             return true;
         }
 
         @Override
         public void onPageFinished(WebView view, String url) {
             super.onPageFinished(view, url);
+            view.loadUrl(javascript);
+            view.loadUrl("javascript:hideOther();");
             getWebView().setVisibility(View.VISIBLE);
             progressCancel();
 

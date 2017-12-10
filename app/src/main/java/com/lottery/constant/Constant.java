@@ -21,7 +21,7 @@ public class Constant {
     //时时彩
     public static final String SHISHICAI = "http://112.74.102.204:86/m/tool.html";
     //澳客彩票
-            public static final String KAIJIANG="http://www.okooo.com/";
+            public static final String AOKEKAIJIANG="http://www.okooo.com/";
     //主页
 //    public static final String ZHANJI = "http://vipc.cn";
 //    public static final String ZHANJI = "https://daren.vipc.cn/";
@@ -38,6 +38,16 @@ public class Constant {
     public static final String ZST="http://m.500.com/datachart/";
     //彩票知识
     public static final String ZHISHI="http://m.500.com/info/zhishi/";
+    //彩票知识
+    public static final String KAIJIANG="http://m.55128.cn/#/lottery";
+
+    //备用网址http://www.sporttery.cn/wap/  图标http://www.17sucai.com/pins/tag/6212.html  http://m.500.com/
+    public static final String live="http://live.m.500.com/home/zq/crazybet/cur?render=local";
+
+    public static final String LIVE360="http://m.cp.360.cn/live/jclq";
+
+
+
 
 
 }

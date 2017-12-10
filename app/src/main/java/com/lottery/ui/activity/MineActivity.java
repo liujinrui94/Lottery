@@ -13,8 +13,10 @@ import com.lottery.R;
 import com.lottery.base.BaseActivity;
 import com.lottery.constant.Common;
 import com.lottery.constant.Constant;
+import com.lottery.ui.activity.explain.ExplainActivity;
 import com.lottery.ui.activity.web.CommissionsActivity;
 import com.lottery.ui.activity.web.RunlotteryActivity;
+import com.lottery.ui.activity.web.ZuCaiActivity;
 import com.lottery.utils.ToastUtils;
 import com.lottery.widget.SwitchButton;
 
@@ -39,9 +41,11 @@ public class MineActivity extends BaseActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mine);
         initView();
+        initToolbar("我的",this,false);
     }
 
     private void initView() {
+
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         switchButton.updateSwitchState(sharedPreferences.getBoolean(Common.VOICE, true));
         switchButton.setOnSwitchListener(new SwitchButton.OnSwitchListener() {
@@ -63,7 +67,7 @@ public class MineActivity extends BaseActivity implements View.OnClickListener {
     }
 
     @Override
-    @OnClick({R.id.setting_computation, R.id.setting_feedback_ll, R.id.setting_version_update_ll})
+    @OnClick({R.id.setting_computation, R.id.setting_feedback_ll, R.id.setting_version_update_ll,R.id.setting_help})
     public void onClick(View v) {
         Intent intent;
         switch (v.getId()) {
@@ -86,6 +90,12 @@ public class MineActivity extends BaseActivity implements View.OnClickListener {
                     }
                 }, 500);
                 break;
+
+            case R.id.setting_help:
+                intent = new Intent(getContext(), ExplainActivity.class);
+                intent.putExtra("url", "http://www.sporttery.cn/wap/help/");
+                intent.putExtra("title", "帮助");
+                startActivity(intent);
             default:
                 break;
 

@@ -1,15 +1,19 @@
 package com.lottery.ui.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 
 import com.lottery.R;
 import com.lottery.base.BaseActivity;
+import com.lottery.constant.Common;
 import com.lottery.constant.Constant;
 import com.lottery.ui.activity.web.RunlotteryActivity;
 import com.lottery.utils.AppLogger;
@@ -37,7 +41,6 @@ public class FootballActivity extends BaseActivity implements View.OnClickListen
     @BindView(R.id.activity_all_web_view)
     WebView webview;
     private String URL;
-    private boolean fist = false;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -75,15 +78,18 @@ public class FootballActivity extends BaseActivity implements View.OnClickListen
     private WebViewClient client = new WebViewClient() {
         // 防止加载网页时调起系统浏览器
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
-//
+            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+            boolean fist = sharedPreferences.getBoolean(Common.FINISH_LOGIN, false);
             if (fist) {
                 Intent mIntent = new Intent(FootballActivity.this, RunlotteryActivity.class);
                 mIntent.putExtra("url", url);
                 mIntent.putExtra("title", "资讯详情");
                 startActivity(mIntent);
-            }else {
+            } else {
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putBoolean(Common.FINISH_LOGIN, true);
+                editor.apply();
                 view.loadUrl(url);
-                fist=true;
             }
             return true;
         }
@@ -114,6 +120,11 @@ public class FootballActivity extends BaseActivity implements View.OnClickListen
             super.onProgressChanged(webView, i);
         }
     };
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
 
     @Override
     public void onClick(View v) {

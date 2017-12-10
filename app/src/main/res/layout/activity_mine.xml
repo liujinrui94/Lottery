@@ -12,7 +12,8 @@
         android:layout_height="50dip"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20.0dip"
-        android:src="@mipmap/icon" />
+        android:src="@mipmap/icon"
+        android:visibility="gone" />
 
     <TextView
         style="@style/text_black_15dp"
@@ -21,7 +22,8 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="14.0dip"
         android:text="@string/app_name"
-        android:textSize="18.0sp" />
+        android:textSize="18.0sp"
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/versionTv"
@@ -30,7 +32,8 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="6.0dip"
         android:text="v1.0"
-        android:textSize="14.0sp" />
+        android:textSize="14.0sp"
+        android:visibility="gone" />
 
     <ImageView
         android:layout_width="fill_parent"
@@ -64,10 +67,35 @@
             android:src="@mipmap/ic_arrow_right" />
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/setting_help"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/text_black_15dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="24dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="帮助中心" />
+
+        <ImageView
+            android:layout_width="12dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="10dp"
+            android:src="@mipmap/ic_arrow_right" />
+    </LinearLayout>
+
+
     <ImageView
         android:layout_width="fill_parent"
         android:layout_height="8.0dip"
-        android:layout_marginTop="20.0dip"
         android:background="#fff5f5f5" />
 
     <LinearLayout

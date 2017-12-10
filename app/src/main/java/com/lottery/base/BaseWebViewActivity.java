@@ -75,7 +75,7 @@ public class BaseWebViewActivity extends AppCompatActivity implements NetEventIn
         webView.setVerticalScrollBarEnabled(false);
         webView.setWebViewClient(client);
         webView.setWebChromeClient(chromeClient);
-        webView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+        webView.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
         webView.loadUrl(url);
         webView.setVisibility(View.GONE);
 
@@ -221,7 +221,6 @@ public class BaseWebViewActivity extends AppCompatActivity implements NetEventIn
     private WebChromeClient chromeClient = new WebChromeClient() {
         @Override
         public void onProgressChanged(WebView webView, int i) {
-
             super.onProgressChanged(webView, i);
         }
     };
@@ -230,7 +229,6 @@ public class BaseWebViewActivity extends AppCompatActivity implements NetEventIn
         super.onActivityResult(requestCode, resultCode, data);
 
     }
-
     @Override
     protected void onDestroy() {
         if (netBroadcastReceiver != null) {

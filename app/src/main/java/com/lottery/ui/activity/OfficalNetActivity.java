@@ -31,15 +31,19 @@ public class OfficalNetActivity extends Activity {
         mWebview = (WebView) findViewById(R.id.my_webView);
         pb = (ProgressBar) findViewById(R.id.my_pb);
         mWebSettings = mWebview.getSettings();
+        mWebSettings.setDisplayZoomControls(false);
+        mWebSettings.setUseWideViewPort(true);
+        mWebSettings.setLoadWithOverviewMode(true);
         mWebSettings.setJavaScriptEnabled(true);
-        mWebview.setDownloadListener((DownloadListener) new MyWebViewDownLoadListener());
+        mWebview.setDownloadListener(new MyWebViewDownLoadListener());
         mWebview.loadUrl(url);
-         //设置WebChromeClient类
+        //设置WebChromeClient类
         mWebview.setWebChromeClient(new WebChromeClient() {
             //获取网站标题
             @Override
             public void onReceivedTitle(WebView view, String title) {
             }
+
             //获取加载进度
             @Override
             public void onProgressChanged(WebView view, int newProgress) {
@@ -57,39 +61,30 @@ public class OfficalNetActivity extends Activity {
         mWebview.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                if( url.startsWith("http:") || url.startsWith("https:") ) {
-                    return false;
-                }
-                try{
+                view.loadUrl(url);
+                try {
                     Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
                     startActivity(intent);
-                }catch(Exception e){}
-
+                } catch (Exception e) {
+                }
                 return true;
-
-
-
             }
         });
 
 
     }
+
     private class MyWebViewDownLoadListener implements DownloadListener {
-
         @Override
-
         public void onDownloadStart(String url, String userAgent, String contentDisposition, String mimetype,
-
                                     long contentLength) {
             Uri uri = Uri.parse(url);
-
             Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-
             startActivity(intent);
-
         }
 
     }
+
     //点击返回上一页面而不是退出浏览器
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {

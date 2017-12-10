@@ -55,6 +55,8 @@ public class RunlotteryActivity extends BaseActivity implements View.OnClickList
             public void onClick(View v) {
                 if (webview.canGoBack()) {
                     webview.goBack();
+                }else {
+                    finish();
                 }
             }
         });
@@ -104,11 +106,9 @@ public class RunlotteryActivity extends BaseActivity implements View.OnClickList
     private WebChromeClient chromeClient = new WebChromeClient() {
         @Override
         public void onProgressChanged(WebView webView, int i) {
-//            if (i != 100) {
-//                webview.setVisibility(View.GONE);
-//            } else {
-//                webview.setVisibility(View.VISIBLE);
-//            }
+            if (i != 100) {
+                webview.setVisibility(View.GONE);
+            }
             super.onProgressChanged(webView, i);
         }
     };
@@ -125,7 +125,6 @@ public class RunlotteryActivity extends BaseActivity implements View.OnClickList
     private class MyWebViewDownLoadListener implements DownloadListener {
         @Override
         public void onDownloadStart(String url, String userAgent, String contentDisposition, String mimetype,
-
                                     long contentLength) {
             Uri uri = Uri.parse(url);
             Intent intent = new Intent(Intent.ACTION_VIEW, uri);

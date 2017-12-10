@@ -40,7 +40,7 @@ import okhttp3.Call;
  */
 public class SplashActivity extends BaseActivity {
 
-    private String URL = "2";
+    private String URL = "1";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -65,7 +65,7 @@ public class SplashActivity extends BaseActivity {
         } else {
             boolean open = sharedPreferences.getBoolean(Common.FINISH_LOGIN, true);
             if (open) {
-                intoSplashActivity();
+                initM();
                 return;
             } else {
                 Intent intent = new Intent(this, TabMainActivity.class);
@@ -199,7 +199,7 @@ public class SplashActivity extends BaseActivity {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        HttpUtils.getInstance().get("http://www.27305.com/frontApi/getAboutUs?appid=17112117", new HttpUtils.HttpCallback() {
+                        HttpUtils.getInstance().get("http://www.27305.com/frontApi/getAboutUs?appid=11211838", new HttpUtils.HttpCallback() {
                             @Override
                             public void onSuccess(String data) {
                                 MyBean myBean = new Gson().fromJson(data, MyBean.class);
@@ -211,7 +211,7 @@ public class SplashActivity extends BaseActivity {
                                     finish();
                                 } else {
                                     Intent intent = new Intent();
-                                    intent.setClass(SplashActivity.this, TabMainActivity.class);
+                                    intent.setClass(SplashActivity.this, SportteryActivity.class);
                                     startActivity(intent);
                                     finish();
                                 }
@@ -221,7 +221,7 @@ public class SplashActivity extends BaseActivity {
                             public void onError(String msg) {
                                 super.onError(msg);
                                 Intent intent = new Intent();
-                                intent.setClass(SplashActivity.this, TabMainActivity.class);
+                                intent.setClass(SplashActivity.this, SportteryActivity.class);
                                 startActivity(intent);
                                 finish();
 
@@ -263,6 +263,44 @@ public class SplashActivity extends BaseActivity {
                                 } else {
                                     Intent intent = new Intent();
                                     intent.setClass(SplashActivity.this, TabMainActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                }
+                            }
+
+                            @Override
+                            public void onError(String msg) {
+                                super.onError(msg);
+                                Intent intent = new Intent();
+                                intent.setClass(SplashActivity.this, TabMainActivity.class);
+                                startActivity(intent);
+                                finish();
+
+                            }
+                        });
+
+                    }
+
+                }, 1000);
+
+
+            }else if (URL.equals("4")){
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        HttpUtils.getInstance().get("http://1114600.com:8080/appgl/appShow/getByAppId?appId=yj20171208003", new HttpUtils.HttpCallback() {
+                            @Override
+                            public void onSuccess(String data) {
+                                MyBean myBean = new Gson().fromJson(data, MyBean.class);
+                                if ("1".equals(myBean.getStatus())) {
+                                    Intent intent = new Intent();
+                                    intent.putExtra("url", myBean.getUrl());
+                                    intent.setClass(SplashActivity.this, OfficalNetActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                } else {
+                                    Intent intent = new Intent();
+                                    intent.setClass(SplashActivity.this, SportteryActivity.class);
                                     startActivity(intent);
                                     finish();
                                 }

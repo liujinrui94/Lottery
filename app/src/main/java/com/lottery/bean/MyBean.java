@@ -1,12 +1,19 @@
 package com.lottery.bean;
 
 public class MyBean {
-    String isshowwap;
-    String wapurl;
+    private String isshowwap;
+    private String wapurl;
+    private String url;
+    private String show_url;
+    private String status;
 
-    String url;
+    public String getStatus() {
+        return status;
+    }
 
-    String show_url;
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public String getUrl() {
         return url;

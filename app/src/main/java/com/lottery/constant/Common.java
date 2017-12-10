@@ -17,5 +17,10 @@ public class Common {
      */
     public static final String VOICE = "voice";
 
+    public static final String URL_FITS = "fist_url";
+
+    public static final String LOCAL_FITS = "LOCAL";
+
+    public static final String NationWide_FITS = "nation";
 
 }

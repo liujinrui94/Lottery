@@ -7,11 +7,11 @@ apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion 26
     defaultConfig {
-        applicationId "com.liuhe.xinshui"
+
         minSdkVersion 15
         targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
+        versionCode 3
+        versionName "1.3"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         ndk {
             //选择要添加的对应cpu类型的.so库。
@@ -19,16 +19,43 @@ android {
             // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
         }
 
-      manifestPlaceholders = [
-                JPUSH_PKGNAME: applicationId,
-                JPUSH_APPKEY : "ec41780c6a6eecc5360cd1a6", //JPush上注册的包名对应的appkey.
-                JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
-        ]
-      /*  manifestPlaceholders = [
-                JPUSH_PKGNAME: applicationId, //华为
-                JPUSH_APPKEY : "db9b6b5832a18ffcc6ef0949", //JPush上注册的包名对应的appkey.
+          applicationId "com.chongqing.cai"
+        manifestPlaceholders = [
+                      JPUSH_PKGNAME: applicationId,
+                      JPUSH_APPKEY : "a4261a3e8dd53f074111b2d2", //JPush上注册的包名对应的appkey.
+                      JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
+                      icon : "@mipmap/shishicai",
+                      appname:"重庆时时彩"
+              ]
+
+     /*   applicationId "com.ticai.lottery"
+        manifestPlaceholders = [
+                JPUSH_PKGNAME: applicationId, //北京赛车
+                JPUSH_APPKEY : "6cbfff97c97043a079aec561", //JPush上注册的包名对应的appkey.
                 JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
         ]*/
+        /*  applicationId "com.lottery.tianxia"
+        manifestPlaceholders = [
+                JPUSH_PKGNAME: applicationId, //北京赛车
+                JPUSH_APPKEY : "9d32c1402e131b689d0d57ff", //JPush上注册的包名对应的appkey.
+                JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
+        ]*/
+ /*       applicationId "com.lottery.xingyun"
+        manifestPlaceholders = [
+                JPUSH_PKGNAME: applicationId, //北京赛车
+                JPUSH_APPKEY : "866466422f66798162720ae2", //JPush上注册的包名对应的appkey.
+                JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
+        ]*/
+    /*    applicationId "com.saiche.zixun"
+        manifestPlaceholders = [
+                JPUSH_PKGNAME: applicationId, //北京赛车
+                JPUSH_APPKEY : "70e2ae37d76583145d48f794", //JPush上注册的包名对应的appkey.
+                JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
+                icon : "@mipmap/jin",
+                appname:"北京赛车掌上助手"
+        ]*/
+
+
         javaCompileOptions {
             annotationProcessorOptions {
                 includeCompileClasspath = true

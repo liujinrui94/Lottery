@@ -5,19 +5,19 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
-import android.webkit.DownloadListener;
-import android.webkit.WebChromeClient;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 
 import com.lottery.R;
 import com.lottery.base.BaseActivity;
 import com.lottery.ui.activity.web.MessageInfoActivity;
-import com.lottery.ui.activity.web.RunlotteryActivity;
 import com.lottery.utils.AppLogger;
+import com.tencent.smtt.sdk.DownloadListener;
+import com.tencent.smtt.sdk.WebChromeClient;
+import com.tencent.smtt.sdk.WebSettings;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebViewClient;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -33,7 +33,7 @@ public class WebViewActivity extends BaseActivity implements View.OnClickListene
 
     @BindView(R.id.activity_all_web_view)
     WebView webview;
-    private String URL;
+    private String URL="http://live.m.500.com/center/football?from=app_bet";
 
     String javascript = "javascript:function hideOther() {"
             + "if(null!= document.getElementsByClassName('cpm-main-nav')) {document.getElementsByClassName('cpm-main-nav')[0].style.display = 'none';}\n" +
@@ -45,7 +45,6 @@ public class WebViewActivity extends BaseActivity implements View.OnClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_webview_all);
         progressShow();
-        URL = getIntent().getStringExtra("url");
         AppLogger.i(URL + "");
         initToolbar("赛事查看", this, false);
         initView();
@@ -120,7 +119,6 @@ public class WebViewActivity extends BaseActivity implements View.OnClickListene
     private class MyWebViewDownLoadListener implements DownloadListener {
 
         @Override
-
         public void onDownloadStart(String url, String userAgent, String contentDisposition, String mimetype,
 
                                     long contentLength) {
@@ -151,7 +149,6 @@ public class WebViewActivity extends BaseActivity implements View.OnClickListene
     public void onDestroy() {
         super.onDestroy();
         webview.stopLoading();
-        webview.clearHistory();
         webview.destroy();
     }
 }

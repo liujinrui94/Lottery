@@ -1,7 +1,9 @@
 package com.lottery.ui.fragment;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +11,7 @@ import android.view.ViewGroup;
 
 import com.lottery.R;
 import com.lottery.base.BaseFragment;
+import com.lottery.constant.Common;
 import com.lottery.ui.activity.FootballActivity;
 import com.lottery.ui.activity.WebViewActivity;
 import com.lottery.ui.activity.web.RunlotteryActivity;
@@ -31,7 +34,6 @@ public class LocalLotteriesFragment extends BaseFragment {
 
     private View rootView = null;
 
-    private boolean fist=false;
 
     @BindView(R.id.fragment_lotteries_web_view)
     WebView webView;
@@ -42,11 +44,13 @@ public class LocalLotteriesFragment extends BaseFragment {
             "if(null!= document.getElementsByClassName('vMod_topBar2')) {document.getElementsByClassName('vMod_topBar2')[0].style.display = 'none';}\n" +
             "if(null!= document.getElementsByClassName('vMod_navScrollBar')) {document.getElementsByClassName('vMod_navScrollBar')[0].style.display = 'none';}\n" +
             "}";
+
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         rootView = inflater.inflate(R.layout.fragment_lotteries, container, false);
         ButterKnife.bind(this, rootView);
+        progressShow();
         initView();
         return rootView;
     }
@@ -62,21 +66,25 @@ public class LocalLotteriesFragment extends BaseFragment {
         webView.setVerticalScrollBarEnabled(false);
         webView.setWebViewClient(client);
         webView.setWebChromeClient(chromeClient);
-        webView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+        webView.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
 
     }
+
     private WebViewClient client = new WebViewClient() {
         // 防止加载网页时调起系统浏览器
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
-
-            if (fist){
-                Intent mIntent = new Intent(getActivity(), RunlotteryActivity.class);
+            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+            boolean fist = sharedPreferences.getBoolean("LocalLotteries", false);
+            if (fist) {
+                Intent mIntent = new Intent(getContext(), RunlotteryActivity.class);
                 mIntent.putExtra("url", url);
                 mIntent.putExtra("title", "资讯详情");
                 startActivity(mIntent);
-            }else {
+            } else {
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putBoolean("LocalLotteries", true);
+                editor.apply();
                 view.loadUrl(url);
-                fist=true;
             }
             return true;
         }
@@ -94,7 +102,6 @@ public class LocalLotteriesFragment extends BaseFragment {
     private WebChromeClient chromeClient = new WebChromeClient() {
         @Override
         public void onProgressChanged(WebView webView, int i) {
-            progressShow();
             super.onProgressChanged(webView, i);
         }
     };
