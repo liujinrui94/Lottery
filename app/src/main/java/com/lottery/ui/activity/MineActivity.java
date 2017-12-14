@@ -14,6 +14,7 @@ import com.lottery.base.BaseActivity;
 import com.lottery.constant.Common;
 import com.lottery.constant.Constant;
 import com.lottery.ui.activity.explain.ExplainActivity;
+import com.lottery.ui.activity.explain.NoJsIntentActivity;
 import com.lottery.ui.activity.web.CommissionsActivity;
 import com.lottery.ui.activity.web.RunlotteryActivity;
 import com.lottery.ui.activity.web.ZuCaiActivity;
@@ -67,7 +68,7 @@ public class MineActivity extends BaseActivity implements View.OnClickListener {
     }
 
     @Override
-    @OnClick({R.id.setting_computation, R.id.setting_feedback_ll, R.id.setting_version_update_ll,R.id.setting_help})
+    @OnClick({R.id.setting_computation, R.id.setting_feedback_ll, R.id.setting_version_update_ll,R.id.setting_help,R.id.setting_fuli})
     public void onClick(View v) {
         Intent intent;
         switch (v.getId()) {
@@ -96,6 +97,11 @@ public class MineActivity extends BaseActivity implements View.OnClickListener {
                 intent.putExtra("url", "http://www.sporttery.cn/wap/help/");
                 intent.putExtra("title", "帮助");
                 startActivity(intent);
+                break;
+            case R.id.setting_fuli:
+                intent = new Intent(getContext(), NoJsIntentActivity.class);
+                startActivity(intent);
+                break;
             default:
                 break;
 

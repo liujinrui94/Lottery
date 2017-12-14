@@ -50,8 +50,6 @@ public class HomeTabActivity extends BaseActivity {
        String javascript = "javascript:function hideOther() {"
                 + "if(null!= document.getElementsByClassName('nav')) {document.getElementsByClassName('nav')[0].style.display = 'none';}" +
                 "}";
-
-
         fragments.add(SsczstFragment.newInstance("http://112.74.102.204:86/m/zst.html",javascript));
         fragments.add(SsczstFragment.newInstance("http://112.74.102.204:86/m/tool.html",javascript));
         fragments.add(SsczstFragment.newInstance("http://112.74.102.204:86/m/yu.html",javascript));

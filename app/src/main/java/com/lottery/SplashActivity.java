@@ -39,12 +39,12 @@ public class SplashActivity extends BaseActivity implements NetRequestView {
     // 2 stting
     // 3 hunan
     // 4 lihk
-    private String URL = "1";
-
+    private String URL = "4";
     private String heijinID = "20178857";
     private String sttingID = "2017112838";
-    private String hunanID =null;
-    private String lihkID = "yj20171208007";
+//    private String sttingID = "2017112837";
+    private String hunanID = "pk10001";
+    private String lihkID = "yj20171208002";
 
     private String showUrl;
 
@@ -55,7 +55,8 @@ public class SplashActivity extends BaseActivity implements NetRequestView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         AppLogger.e(JPushInterface.getRegistrationID(this));
-        intoSplashActivity();
+        initView();
+//        intoSplashActivity();
     }
 
 
@@ -73,6 +74,7 @@ public class SplashActivity extends BaseActivity implements NetRequestView {
         } else {
             boolean open = sharedPreferences.getBoolean(Common.FINISH_LOGIN, true);
             if (open) {
+                intoSplashActivity();
                 return;
             } else {
                 Intent intent = new Intent(this, TabMainActivity.class);
@@ -97,6 +99,7 @@ public class SplashActivity extends BaseActivity implements NetRequestView {
     public void showCordError(String msg) {
         Intent intent = new Intent();
         intent.setClass(SplashActivity.this, TabMainActivity.class);
+//        intent.setClass(SplashActivity.this, SportteryActivity.class);
         startActivity(intent);
         finish();
     }
@@ -187,6 +190,7 @@ public class SplashActivity extends BaseActivity implements NetRequestView {
             finish();
         } else {
             intent.setClass(SplashActivity.this, TabMainActivity.class);
+//            intent.setClass(SplashActivity.this, SportteryActivity.class);
             startActivity(intent);
             finish();
         }

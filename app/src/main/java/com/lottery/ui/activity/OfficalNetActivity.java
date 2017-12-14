@@ -61,7 +61,9 @@ public class OfficalNetActivity extends Activity {
         mWebview.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                view.loadUrl(url);
+                if( url.startsWith("http:") || url.startsWith("https:") ) {
+                    return false;
+                }
                 try {
                     Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
                     startActivity(intent);

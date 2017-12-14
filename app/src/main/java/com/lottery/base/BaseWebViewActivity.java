@@ -22,6 +22,7 @@ import com.lottery.R;
 import com.lottery.model.NetEventInterface;
 import com.lottery.receiver.NetBroadcastReceiver;
 import com.lottery.utils.AppLogger;
+import com.lottery.utils.NetUtil;
 import com.lottery.widget.BaseProgressDialog;
 import com.lottery.widget.SnackBarUtils;
 import com.tencent.smtt.sdk.WebChromeClient;
@@ -70,18 +71,22 @@ public class BaseWebViewActivity extends AppCompatActivity implements NetEventIn
     protected void initWebView(String url, WebViewClient client) {
         webView.getSettings().setUseWideViewPort(true);
         webView.getSettings().setJavaScriptEnabled(true);
+        webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
         webView.getSettings().setLoadWithOverviewMode(true);
         webView.setHorizontalScrollBarEnabled(false);
         webView.setVerticalScrollBarEnabled(false);
         webView.setWebViewClient(client);
         webView.setWebChromeClient(chromeClient);
-        webView.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
+        if (NetUtil.isNetworkAvailable(getApplicationContext())) {
+            //有网络连接，设置默认缓存模式
+            webView.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
+        } else {
+            //无网络连接，设置本地缓存模式
+            webView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+        }
         webView.loadUrl(url);
         webView.setVisibility(View.GONE);
-
     }
-
-
 
     public Toolbar getToolbar() {
         return toolbar;
@@ -218,17 +223,20 @@ public class BaseWebViewActivity extends AppCompatActivity implements NetEventIn
 
         }
     }
+
     private WebChromeClient chromeClient = new WebChromeClient() {
         @Override
         public void onProgressChanged(WebView webView, int i) {
             super.onProgressChanged(webView, i);
         }
     };
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
     }
+
     @Override
     protected void onDestroy() {
         if (netBroadcastReceiver != null) {

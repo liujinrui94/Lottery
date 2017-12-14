@@ -1,9 +1,7 @@
 package com.lottery.ui.activity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.view.View;
@@ -13,8 +11,6 @@ import android.widget.LinearLayout;
 
 import com.lottery.R;
 import com.lottery.base.BaseActivity;
-import com.lottery.constant.Common;
-import com.lottery.constant.Constant;
 import com.lottery.widget.BezierRoundView;
 import com.lottery.widgetadapter.GuideViewPagerAdapter;
 
@@ -28,8 +24,8 @@ public class GuideActivity extends BaseActivity implements ViewPager.OnPageChang
     private Button intoSplash;//进入splash按钮
 
     // 引导图片资源
-    private static final int[] pics = {R.mipmap.one,
-            R.mipmap.two, R.mipmap.three, R.mipmap.four};
+    private static final int[] pics = {R.mipmap.six,
+            R.mipmap.five, R.mipmap.three, R.mipmap.two};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -72,17 +68,8 @@ public class GuideActivity extends BaseActivity implements ViewPager.OnPageChang
     }
 
 
-    /**
-     * 初始化viewpager需加载的数据
-     */
-    protected void initData() {
-    }
-
-
-
-
     private void intoSplashActivity() {
-        Intent intent = new Intent(GuideActivity.this, SplashActivity.class);
+        Intent intent = new Intent(GuideActivity.this, com.lottery.SplashActivity.class);
         startActivity(intent);
         finish();
 

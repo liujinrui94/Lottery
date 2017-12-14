@@ -29,13 +29,10 @@
         android:label="${appname}"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
-
-        </activity>
-
+        <activity android:name=".MainActivity"></activity>
         <activity
             android:name="com.lottery.SplashActivity"
-            android:launchMode="singleTask">
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -64,9 +61,16 @@
         <activity android:name=".ui.activity.ZstActivity"></activity>
         <activity android:name=".ui.activity.web.NoJsWebViewActivity"></activity>
         <activity android:name=".ui.activity.KnowledgeActivity"></activity>
+        <activity android:name=".ui.activity.lottery.KJZSActivity"></activity>
+        <activity android:name=".ui.activity.explain.FLActivity"></activity>
         <activity
             android:name=".ui.activity.web.ZucaiNextActivity"
             android:launchMode="singleInstance"></activity>
+        <activity
+            android:name=".ui.activity.explain.NoJsIntentActivity"
+            ></activity>
+
+
         <activity
             android:name=".ui.activity.web.ZuCaiActivity"
             android:launchMode="singleInstance"></activity>

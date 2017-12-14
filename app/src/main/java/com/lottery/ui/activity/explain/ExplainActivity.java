@@ -22,8 +22,6 @@ public class ExplainActivity extends BaseWebViewActivity {
 
     private String url = "http://www.sporttery.cn/wap/help/";
     private String title = "帮助中心";
-    public static final String ZuCai_URL = "ZuCai_url";
-    public static final String ZuCai_TITLE = "ZuCai_title";
     private String javascript = "javascript:function hideOther() {"
             + "if(document.getElementsByClassName('betting')[0] != null) {document.getElementsByClassName('betting')[0].style.display = 'none';}"
             + "if(document.getElementsByClassName('header')[0] != null) {document.getElementsByClassName('header')[0].style.display = 'none';}"

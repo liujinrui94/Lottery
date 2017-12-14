@@ -47,7 +47,7 @@ public class FootballActivity extends BaseActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_webview_all);
         URL = getIntent().getStringExtra("url");
-        initToolbar("开奖资讯", this, false);
+        initToolbar("开奖", this, false);
         initView();
     }
 

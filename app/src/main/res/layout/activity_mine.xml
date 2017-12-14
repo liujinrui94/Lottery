@@ -92,6 +92,30 @@
             android:src="@mipmap/ic_arrow_right" />
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/setting_fuli"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/text_black_15dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="24dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="福利中心" />
+
+        <ImageView
+            android:layout_width="12dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="10dp"
+            android:src="@mipmap/ic_arrow_right" />
+    </LinearLayout>
 
     <ImageView
         android:layout_width="fill_parent"
@@ -113,7 +137,7 @@
             android:layout_marginLeft="24dp"
             android:layout_weight="1"
             android:gravity="center_vertical"
-            android:text="推送设置" />
+            android:text="消息推送" />
 
         <com.lottery.widget.SwitchButton
             android:id="@+id/setting_switchButton"

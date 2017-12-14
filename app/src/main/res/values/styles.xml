@@ -6,9 +6,6 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:windowAnimationStyle">@style/ActivityAnimation</item>
-        <item name="android:windowSoftInputMode">adjustUnspecified|stateHidden</item>
-        <item name="android:configChanges">orientation|keyboardHidden|screenSize</item>
     </style>
     <!--Activity Animation-->
     <style name="ActivityAnimation" parent="@android:style/Animation.Activity">
@@ -16,7 +13,10 @@
         <item name="android:activityOpenExitAnimation">@anim/activity_out_to_left</item>
         <item name="android:activityCloseEnterAnimation">@anim/activity_into_from_left</item>
         <item name="android:activityCloseExitAnimation">@anim/activity_out_to_right</item>
+
+
     </style>
+
     <style name="CommonDialog" parent="@android:style/Theme.Dialog">
         <item name="android:windowFrame">@null</item>
         <item name="android:windowIsFloating">true</item>
@@ -26,6 +26,7 @@
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:backgroundDimEnabled">true</item>
     </style>
+
     <style name="tab_main_activity_radio_button">
         <!-- 水平居中 -->
         <item name="android:gravity">center</item>
@@ -38,6 +39,7 @@
         <item name="android:button">@null</item>
         <item name="android:background">@mipmap/ic_tab_bottom_bg</item>
     </style>
+
     <style name="tab_button">
         <item name="android:textSize">12.0dip</item>
         <item name="android:textColor">@drawable/menu_tab_name_selector</item>
@@ -82,10 +84,12 @@
         <item name="android:textColor">@color/grayTextColor</item>
         <item name="android:textSize" tools:ignore="SpUsage">13dp</item>
     </style>
+
     <style name="text_gray_15dp">
         <item name="android:textColor">@color/grayTextColor</item>
         <item name="android:textSize" tools:ignore="SpUsage">15dp</item>
     </style>
+
     <style name="text_gray_18dp">
         <item name="android:textColor">@color/bg_grey_dark</item>
         <item name="android:textSize" tools:ignore="SpUsage">18dp</item>

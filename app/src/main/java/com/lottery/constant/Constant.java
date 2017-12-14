@@ -21,7 +21,7 @@ public class Constant {
     //时时彩
     public static final String SHISHICAI = "http://112.74.102.204:86/m/tool.html";
     //澳客彩票
-            public static final String AOKEKAIJIANG="http://www.okooo.com/";
+    public static final String AOKEKAIJIANG = "http://www.okooo.com/";
     //主页
 //    public static final String ZHANJI = "http://vipc.cn";
 //    public static final String ZHANJI = "https://daren.vipc.cn/";
@@ -35,19 +35,24 @@ public class Constant {
     //500球类直播
     public static final String QIULEIZHIBO = "http://live.m.500.com/center/football?from=app_bet";
     //
-    public static final String ZST="http://m.500.com/datachart/";
+    public static final String ZST = "http://m.500.com/datachart/";
     //彩票知识
-    public static final String ZHISHI="http://m.500.com/info/zhishi/";
+    public static final String ZHISHI = "http://m.500.com/info/zhishi/";
     //彩票知识
-    public static final String KAIJIANG="http://m.55128.cn/#/lottery";
+    public static final String KAIJIANG = "http://m.55128.cn/#/lottery";
 
     //备用网址http://www.sporttery.cn/wap/  图标http://www.17sucai.com/pins/tag/6212.html  http://m.500.com/
-    public static final String live="http://live.m.500.com/home/zq/crazybet/cur?render=local";
+    public static final String live = "http://live.m.500.com/home/zq/crazybet/cur?render=local";
 
-    public static final String LIVE360="http://m.cp.360.cn/live/jclq";
+    public static final String LIVE360 = "http://m.cp.360.cn/live/jclq";
 
-
-
+    public static final String XUYUAN = "https://statics.xiaobaicp.com/page/found/jcxy/index.html";
+    //http://activity.aaqos.cn/activity/index?id=1647&slotId=1981&login=normal&appKey=Yop5SE9gfXLeCnHpYwhjR12HkB2&deviceId=29fd00f5-9078-4f04-86c6-347834799ca3&dsm=1.1981.0.0&tenter=SOW&tck_rid_6c8=0a1ce5bbjaxbrkz4-102166369&tck_loc_c5d=tactivity-1647&dcm=401.1981.0.0&&tenter=SOW&tck_userId_674=null
+//   福利广告 http://engine.aaqos.cn/index/activity?appKey=Yop5SE9gfXLeCnHpYwhjR12HkB2&adslotId=1981
+//    public static final String FULI = "http://activity.aaqos.cn/activity/index?id=1647&slotId=1981&login=normal&appKey=Yop5SE9gfXLeCnHpYwhjR12HkB2&deviceId=4c0a0cf9-9a5d-4f94-b872-b13a47f0e3cf&dsm=1.1981.0.0&tenter=SOW&tck_rid_6c8=0a1b0231jaxbz0dm-78982809&tck_loc_c5d=tactivity-1647&dcm=401.1981.0.0&&tenter=SOW&tck_userId_674=null";
+    //http://www.opencai.net/apifree/
+    public static final String FULI="http://activity.aaqos.cn/activity/index?id=3813&slotId=1981&login=normal&appKey=Yop5SE9gfXLeCnHpYwhjR12HkB2&deviceId=9a4dac97-dc5a-4f0e-b018-2ac683d0d61b&dsm=1.1981.0.0&tenter=SOW&tck_rid_6c8=0a2f5cbdjaxbz7nj-105791911&tck_loc_c5d=tactivity-3813&dcm=401.1981.0.0&&tenter=SOW&tck_userId_674=null";
+    public static final String columns="https://vipc.cn/columns/digit?in=result_content";
 
 
 }
