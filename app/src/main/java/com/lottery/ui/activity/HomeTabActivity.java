@@ -41,7 +41,7 @@ public class HomeTabActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_tab);
         initView();
-        initToolbar("首页",this,false);
+        initToolbar("开奖走势",this,false);
     }
 
 

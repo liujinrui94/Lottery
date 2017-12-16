@@ -11,11 +11,17 @@ import com.lottery.R;
 import com.lottery.base.AppApplication;
 import com.lottery.constant.Constant;
 import com.lottery.ui.activity.explain.FLActivity;
+import com.lottery.ui.activity.explain.LotteryQueryActivity;
+import com.lottery.ui.activity.explain.NoJsIntentActivity;
+import com.lottery.ui.activity.lottery.InformationActivity;
 import com.lottery.ui.activity.lottery.KJZSActivity;
 import com.lottery.ui.activity.lottery.NationWideActivity;
 import com.lottery.ui.activity.lottery.SSCActivity;
 import com.lottery.ui.activity.match.MatchActivity;
 import com.lottery.ui.activity.match.ScoreLiveActivity;
+import com.lottery.ui.activity.match.SportteryOneActivity;
+import com.lottery.ui.activity.match.SportteryTwoActivity;
+import com.lottery.ui.activity.web.KnowledgeNextActivity;
 import com.lottery.ui.activity.web.WCLiveActivity;
 import com.lottery.ui.activity.web.ZuCaiActivity;
 import com.lottery.ui.activity.web.ZucaiNextActivity;
@@ -50,22 +56,46 @@ public class TabMainActivity extends TabActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tab_main_activity);
-
         mContext = this;
         setupIntent();
     }
 
+    /*    private void setupIntent() {
+    //            mWorkIntent = new Intent(this, NationWideActivity.class);
+            mWorkIntent = new Intent(this, FootballActivity.class);
+            mWorkIntent.putExtra("url", Constant.ZHIBO);
+            //        mWorkIntent = new Intent(this, LotteryLobbyActivity.class);
+            mChatIntent = new Intent(this, KJZSActivity.class);
+            mContactsIntent = new Intent(this, FLActivity.class);
+            mCircleIntent = new Intent(this, MineActivity.class);
+    //        mCircleIntent = new Intent(this, MineActivity.class);
+            initTabhost();
+        }*/
+//    private void setupIntent() {
+//        mWorkIntent = new Intent(this, NationWideActivity.class);
+//        mChatIntent = new Intent(this, KJZSActivity.class);
+//        mContactsIntent = new Intent(this, ZuCaiActivity.class);
+//        mCircleIntent = new Intent(this, SportteryActivity.class);
+//        initTabhost();
+//    }
     private void setupIntent() {
-//            mWorkIntent = new Intent(this, NationWideActivity.class);
-        mWorkIntent = new Intent(this, FootballActivity.class);
-        mWorkIntent.putExtra("url", Constant.ZHIBO);
-        //        mWorkIntent = new Intent(this, LotteryLobbyActivity.class);
-        mChatIntent = new Intent(this, KJZSActivity.class);
-        mContactsIntent = new Intent(this, FLActivity.class);
-        mCircleIntent = new Intent(this, MineActivity.class);
-//        mCircleIntent = new Intent(this, MineActivity.class);
+        mWorkIntent = new Intent(this, HomeTabActivity.class);
+        mChatIntent = new Intent(this, MatchActivity.class);
+        mContactsIntent = new Intent(this, InformationActivity.class);
+        mCircleIntent = new Intent(this, LotteryQueryActivity.class);
         initTabhost();
     }
+
+
+ /*   private void setupIntent() {
+        mWorkIntent = new Intent(this, FootballActivity.class);
+        mWorkIntent.putExtra("url", Constant.ZHIBO);
+        mChatIntent = new Intent(this, ZstActivity.class);
+        mContactsIntent = new Intent(this, NoJsIntentActivity.class);
+        mCircleIntent = new Intent(this, MineActivity.class);
+        initTabhost();
+    }*/
+
 //    private void setupIntent() {
 //        mWorkIntent = new Intent(this, HomeTabActivity.class);
 //        mChatIntent = new Intent(this, NationWideActivity.class);
@@ -80,13 +110,13 @@ public class TabMainActivity extends TabActivity {
                 getResources().getDrawable(R.drawable.tab_appcenter), "首页");
         mTabHost.addMenuItem(weakTabItem);
         contactsTabItem = new MenuTabItem(mContext, null, mChatIntent,
-                getResources().getDrawable(R.drawable.select_knowledge_rb), "资讯");
+                getResources().getDrawable(R.drawable.selector_main_rb2), "赛事");
         mTabHost.addMenuItem(contactsTabItem);
         chatTabItem = new MenuTabItem(mContext, null, mContactsIntent,
-                getResources().getDrawable(R.drawable.selector_main_rb2), "赛事");
+                getResources().getDrawable(R.drawable.select_knowledge_rb), "资讯");
         mTabHost.addMenuItem(chatTabItem);
         circleTabItem = new MenuTabItem(mContext, null, mCircleIntent,
-                getResources().getDrawable(R.drawable.selector_main_rb3), "我的");
+                getResources().getDrawable(R.drawable.tab_main_query), "查询");
         mTabHost.addMenuItem(circleTabItem);
         mTabHost.setCurrentTab(0);
 

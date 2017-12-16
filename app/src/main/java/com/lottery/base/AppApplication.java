@@ -28,7 +28,6 @@ public class AppApplication extends Application {
         instance = this;
         initTBS();
         //极光推送
-        JPushInterface.setDebugMode(false);
         JPushInterface.init(this);
     }
 

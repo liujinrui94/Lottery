@@ -1,27 +1,17 @@
-package com.lottery.ui.activity;
+package com.lottery.ui.activity.match;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 
 import com.lottery.base.BaseWebViewActivity;
-import com.lottery.ui.activity.web.KnowledgeNextActivity;
 import com.tencent.smtt.sdk.WebView;
 import com.tencent.smtt.sdk.WebViewClient;
 
-/**
- * @author: LiuJinrui
- * @email: liujinrui@qdcftx.com
- * @time: 2017/12/8 22:07
- * @description:
- */
-public class SportteryActivity extends BaseWebViewActivity {
+public class SportteryTwoActivity extends BaseWebViewActivity {
 
 
-    private String url = "http://www.sporttery.cn/wap/fb/";
 //    private String url = "http://www.sporttery.cn/wap/sz/";
     private String javascript = "javascript:function hideOther() {"
             + "if(document.getElementsByClassName('header')[0] != null) {document.getElementsByClassName('header')[0].style.display = 'none';}"
@@ -33,13 +23,13 @@ public class SportteryActivity extends BaseWebViewActivity {
         super.onCreate(savedInstanceState);
         initToolbar("app", this, false);
         getToolbar().setVisibility(View.GONE);
-        initWebView(url, client);
+        initWebView(getIntent().getStringExtra(SportteryOneActivity.KNOWLEDGE_URL), client);
     }
 
     private WebViewClient client = new WebViewClient() {
         // 防止加载网页时调起系统浏览器
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            if (url.contains("basketball/info")||url.contains("wap/football/jczj/")) {
+            if (url.contains("basketball/info")) {
                 return true;
             }
             progressShow();

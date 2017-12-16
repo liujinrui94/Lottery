@@ -1,49 +1,51 @@
-package com.lottery.ui.activity;
+package com.lottery.ui.activity.lottery;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 
 import com.lottery.base.BaseWebViewActivity;
-import com.lottery.ui.activity.web.KnowledgeNextActivity;
+import com.lottery.constant.Constant;
 import com.tencent.smtt.sdk.WebView;
 import com.tencent.smtt.sdk.WebViewClient;
 
 /**
  * @author: LiuJinrui
  * @email: liujinrui@qdcftx.com
- * @time: 2017/12/8 22:07
+ * @time: 2017/12/16 11:22
  * @description:
  */
-public class SportteryActivity extends BaseWebViewActivity {
+public class InformationNetxActivity extends BaseWebViewActivity {
 
 
-    private String url = "http://www.sporttery.cn/wap/fb/";
-//    private String url = "http://www.sporttery.cn/wap/sz/";
+
+
+    private String url = Constant.DALETOU;
+    private String title = "资讯";
+    private Boolean back=false;
+
     private String javascript = "javascript:function hideOther() {"
-            + "if(document.getElementsByClassName('header')[0] != null) {document.getElementsByClassName('header')[0].style.display = 'none';}"
+            + "if(document.getElementsByClassName('zx-top-head')[0] != null) {document.getElementsByClassName('zx-top-head')[0].style.display = 'none';}"
             + "if(document.getElementsByClassName('footer')[0] != null) {document.getElementsByClassName('footer')[0].style.display = 'none';}"
             + "}";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initToolbar("app", this, false);
-        getToolbar().setVisibility(View.GONE);
+
+        if (getIntent().getStringExtra("url") != null) {
+            url = getIntent().getStringExtra("url");
+            title = getIntent().getStringExtra("title");
+            back=true;
+        }
+        initToolbar(title, this, back);
         initWebView(url, client);
     }
 
     private WebViewClient client = new WebViewClient() {
         // 防止加载网页时调起系统浏览器
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            if (url.contains("basketball/info")||url.contains("wap/football/jczj/")) {
-                return true;
-            }
-            progressShow();
-            getWebView().setVisibility(View.GONE);
             view.loadUrl(url);
             return true;
         }
@@ -58,15 +60,4 @@ public class SportteryActivity extends BaseWebViewActivity {
 
         }
     };
-
-    //点击返回上一页面而不是退出浏览器
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK && getWebView().canGoBack()) {
-            getWebView().goBack();
-            return true;
-        }
-
-        return super.onKeyDown(keyCode, event);
-    }
 }

@@ -39,6 +39,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".ui.activity.GuideActivity"
             android:launchMode="singleTask"></activity>
@@ -63,12 +64,17 @@
         <activity android:name=".ui.activity.KnowledgeActivity"></activity>
         <activity android:name=".ui.activity.lottery.KJZSActivity"></activity>
         <activity android:name=".ui.activity.explain.FLActivity"></activity>
+        <activity android:name=".ui.activity.match.SportteryOneActivity"></activity>
+        <activity android:name=".ui.activity.match.SportteryTwoActivity"></activity>
+
+        <activity android:name=".ui.activity.lottery.InformationActivity"></activity>
+
+        <activity android:name=".ui.activity.lottery.InformationNetxActivity"></activity>
+
         <activity
             android:name=".ui.activity.web.ZucaiNextActivity"
             android:launchMode="singleInstance"></activity>
-        <activity
-            android:name=".ui.activity.explain.NoJsIntentActivity"
-            ></activity>
+        <activity android:name=".ui.activity.explain.NoJsIntentActivity"></activity>
 
 
         <activity
@@ -88,6 +94,7 @@
         <activity android:name=".ui.activity.lottery.SSCActivity"></activity>
         <activity android:name=".ui.activity.match.ScoreLiveActivity"></activity>
         <activity android:name=".ui.activity.HomeTabActivity"></activity>
+        <activity android:name=".ui.activity.explain.LotteryQueryActivity"></activity>
 
         <receiver
             android:name=".receiver.MyReceiver"

@@ -41,10 +41,10 @@ public class SplashActivity extends BaseActivity implements NetRequestView {
     // 4 lihk
     private String URL = "4";
     private String heijinID = "20178857";
-    private String sttingID = "2017112838";
-//    private String sttingID = "2017112837";
+    private String sttingID = "17112117";
+    //    private String sttingID = "2017112837";
     private String hunanID = "pk10001";
-    private String lihkID = "yj20171208002";
+    private String lihkID = "yj20171208003";
 
     private String showUrl;
 

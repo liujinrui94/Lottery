@@ -28,7 +28,7 @@ public class NationWideActivity extends BaseWebViewActivity {
     public static final String MATCH_URL = "MATCH_url";
     public static final String MATCH_TITLE = "MATCH_title";
 
-    private String url = "https://vipc.cn/results?in=home_tools_0#hot";
+    private String lourl = "https://vipc.cn/results?in=home_tools_0#hot";
     String javascript = "javascript:function hideOther() {"
             + "if(null!= document.getElementsByClassName('vFooter2')) {document.getElementsByClassName('vFooter2')[0].style.display = 'none';}\n" +
             "if(null!= document.getElementsByClassName('vMod_topBar2')) {document.getElementsByClassName('vMod_topBar2')[0].style.display = 'none';}\n" +
@@ -38,24 +38,19 @@ public class NationWideActivity extends BaseWebViewActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initToolbar(title, this, false);
-        initWebView(url, client);
+        initWebView(lourl, client);
 
     }
 
     private WebViewClient client = new WebViewClient() {
         // 防止加载网页时调起系统浏览器
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-            boolean fist = sharedPreferences.getBoolean(Common.NationWide_FITS, false);
-            if (fist) {
+            if (!url.equals(lourl)) {
                 Intent mIntent = new Intent(getContext(), RunlotteryActivity.class);
                 mIntent.putExtra("url", url);
-                mIntent.putExtra("title", "资讯详情");
+                mIntent.putExtra("title", "开奖详情");
                 startActivity(mIntent);
             } else {
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putBoolean(Common.NationWide_FITS, true);
-                editor.apply();
                 view.loadUrl(url);
                 getWebView().setVisibility(View.GONE);
             }

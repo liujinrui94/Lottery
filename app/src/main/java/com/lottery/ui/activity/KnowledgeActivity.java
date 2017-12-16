@@ -20,14 +20,15 @@ import com.tencent.smtt.sdk.WebViewClient;
 public class KnowledgeActivity extends BaseWebViewActivity {
 
     private String url = "http://m.500.com/info/zhishi/";
-    private String title = "彩票知识库";
-    public static final String KNOWLEDGE_URL ="Knowledge_url";
-    public static final String KNOWLEDGE_TITLE ="Knowledge_title";
+    private String title = "知识库";
+    public static final String KNOWLEDGE_URL = "Knowledge_url";
+    public static final String KNOWLEDGE_TITLE = "Knowledge_title";
     private String javascript = "javascript:function hideOther() {"
             + "if(document.getElementsByClassName('ui-head')[0] != null) {document.getElementsByClassName('ui-head')[0].style.display = 'none';}"
             + "if(document.getElementsByClassName('index-top')[0] != null) {document.getElementsByClassName('index-top')[0].style.display = 'none';}"
             + "if(document.getElementsByClassName('load-more')[0] != null) {document.getElementsByClassName('load-more')[0].style.display = 'none';}"
-            +"}";
+            + "}";
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

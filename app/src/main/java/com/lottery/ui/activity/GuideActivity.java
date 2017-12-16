@@ -24,8 +24,8 @@ public class GuideActivity extends BaseActivity implements ViewPager.OnPageChang
     private Button intoSplash;//进入splash按钮
 
     // 引导图片资源
-    private static final int[] pics = {R.mipmap.six,
-            R.mipmap.five, R.mipmap.three, R.mipmap.two};
+    private static final int[] pics = {R.mipmap.four,
+            R.mipmap.five,  R.mipmap.bg_shaple};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

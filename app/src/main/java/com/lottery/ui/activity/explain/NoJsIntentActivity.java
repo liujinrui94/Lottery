@@ -18,21 +18,24 @@ import com.tencent.smtt.sdk.WebViewClient;
 public class NoJsIntentActivity extends BaseWebViewActivity {
 
 
-    private String url = "https://statics.xiaobaicp.com/page/found/jcxy/index.html";
-    private String title;
-    private Boolean back=false;
+    //    private String url = "https://statics.xiaobaicp.com/page/found/jcxy/index.html";
+    private String url = "http://m.cp.360.cn/live/jclq";
+    private String title = "";
+    private Boolean back = false;
 
-    public static final String NoJsIntent_URL ="NoJsIntent_url";
-    public static final String NoJsIntent_TITLE ="NoJsIntent_title";
+    public static final String NoJsIntent_URL = "NoJsIntent_url";
+    public static final String NoJsIntent_TITLE = "NoJsIntent_title";
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (null != getIntent().getStringExtra(NoJsIntentActivity.NoJsIntent_URL)) {
             url = getIntent().getStringExtra(NoJsIntentActivity.NoJsIntent_URL);
             title = getIntent().getStringExtra(NoJsIntentActivity.NoJsIntent_TITLE);
-            back=true;
-
+            back = true;
         }
+        getToolbar().setVisibility(View.GONE);
+        initToolbar(title, this, back);
         initWebView(url, client);
     }
 
@@ -41,6 +44,7 @@ public class NoJsIntentActivity extends BaseWebViewActivity {
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
             Intent mIntent = new Intent(NoJsIntentActivity.this, NoJsIntentActivity.class);
             mIntent.putExtra(NoJsIntent_URL, url);
+            mIntent.putExtra(NoJsIntent_TITLE, "详情");
             startActivity(mIntent);
             return true;
         }

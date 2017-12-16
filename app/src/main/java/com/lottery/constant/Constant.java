@@ -41,6 +41,9 @@ public class Constant {
     //彩票知识
     public static final String KAIJIANG = "http://m.55128.cn/#/lottery";
 
+    //资讯
+    public static final String ZIXUN="http://m.500.com/info/article/";
+
     //备用网址http://www.sporttery.cn/wap/  图标http://www.17sucai.com/pins/tag/6212.html  http://m.500.com/
     public static final String live = "http://live.m.500.com/home/zq/crazybet/cur?render=local";
 
@@ -53,6 +56,11 @@ public class Constant {
     //http://www.opencai.net/apifree/
     public static final String FULI="http://activity.aaqos.cn/activity/index?id=3813&slotId=1981&login=normal&appKey=Yop5SE9gfXLeCnHpYwhjR12HkB2&deviceId=9a4dac97-dc5a-4f0e-b018-2ac683d0d61b&dsm=1.1981.0.0&tenter=SOW&tck_rid_6c8=0a2f5cbdjaxbz7nj-105791911&tck_loc_c5d=tactivity-3813&dcm=401.1981.0.0&&tenter=SOW&tck_userId_674=null";
     public static final String columns="https://vipc.cn/columns/digit?in=result_content";
+
+
+    //走势 http://m.500.com/chart/index.html
+
+    //开奖查询   http://m.500.com/info/index.php?c=zhongjiang&a=dlt&from=kaijiang
 
 
 }

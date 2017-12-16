@@ -1,13 +1,14 @@
-package com.lottery.ui.activity;
+package com.lottery.ui.activity.match;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 
 import com.lottery.base.BaseWebViewActivity;
+import com.lottery.ui.activity.KnowledgeActivity;
+import com.lottery.ui.activity.SportteryActivity;
 import com.lottery.ui.activity.web.KnowledgeNextActivity;
 import com.tencent.smtt.sdk.WebView;
 import com.tencent.smtt.sdk.WebViewClient;
@@ -15,14 +16,18 @@ import com.tencent.smtt.sdk.WebViewClient;
 /**
  * @author: LiuJinrui
  * @email: liujinrui@qdcftx.com
- * @time: 2017/12/8 22:07
+ * @time: 2017/12/15 0:35
  * @description:
  */
-public class SportteryActivity extends BaseWebViewActivity {
+public class SportteryOneActivity extends BaseWebViewActivity {
 
 
-    private String url = "http://www.sporttery.cn/wap/fb/";
-//    private String url = "http://www.sporttery.cn/wap/sz/";
+//    private String url = "http://m.sporttery.cn/wap/bk_result_list.html";
+
+    public static String KNOWLEDGE_URL="sporttery_url";
+    private String KNOWLEDGE_TITLE="sporttery_title";
+
+    private String url ="http://m.sporttery.cn/wap/fb_lottery.html";
     private String javascript = "javascript:function hideOther() {"
             + "if(document.getElementsByClassName('header')[0] != null) {document.getElementsByClassName('header')[0].style.display = 'none';}"
             + "if(document.getElementsByClassName('footer')[0] != null) {document.getElementsByClassName('footer')[0].style.display = 'none';}"
@@ -39,12 +44,17 @@ public class SportteryActivity extends BaseWebViewActivity {
     private WebViewClient client = new WebViewClient() {
         // 防止加载网页时调起系统浏览器
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            if (url.contains("basketball/info")||url.contains("wap/football/jczj/")) {
+            if (url.contains("basketball/info")) {
                 return true;
+            }else {
+                Intent mIntent = new Intent(SportteryOneActivity.this, SportteryTwoActivity.class);
+                mIntent.putExtra(KNOWLEDGE_URL, url);
+                mIntent.putExtra(KNOWLEDGE_TITLE, "详情");
+                startActivity(mIntent);
             }
-            progressShow();
-            getWebView().setVisibility(View.GONE);
-            view.loadUrl(url);
+//            progressShow();
+//            getWebView().setVisibility(View.GONE);
+//            view.loadUrl(url);
             return true;
         }
 
