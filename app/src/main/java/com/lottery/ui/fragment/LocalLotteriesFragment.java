@@ -11,11 +11,7 @@ import android.view.ViewGroup;
 
 import com.lottery.R;
 import com.lottery.base.BaseFragment;
-import com.lottery.constant.Common;
-import com.lottery.ui.activity.FootballActivity;
-import com.lottery.ui.activity.WebViewActivity;
 import com.lottery.ui.activity.web.RunlotteryActivity;
-import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.tencent.smtt.sdk.WebChromeClient;
 import com.tencent.smtt.sdk.WebSettings;
 import com.tencent.smtt.sdk.WebView;

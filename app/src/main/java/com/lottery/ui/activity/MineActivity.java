@@ -14,6 +14,7 @@ import com.lottery.base.BaseActivity;
 import com.lottery.constant.Common;
 import com.lottery.constant.Constant;
 import com.lottery.ui.activity.explain.ExplainActivity;
+import com.lottery.ui.activity.explain.LotteryQueryActivity;
 import com.lottery.ui.activity.explain.NoJsIntentActivity;
 import com.lottery.ui.activity.web.CommissionsActivity;
 import com.lottery.ui.activity.web.RunlotteryActivity;
@@ -42,7 +43,7 @@ public class MineActivity extends BaseActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mine);
         initView();
-        initToolbar("我的",this,false);
+        initToolbar("我的", this, false);
     }
 
     private void initView() {
@@ -68,7 +69,8 @@ public class MineActivity extends BaseActivity implements View.OnClickListener {
     }
 
     @Override
-    @OnClick({R.id.setting_computation, R.id.setting_feedback_ll, R.id.setting_version_update_ll,R.id.setting_help,R.id.setting_fuli})
+    @OnClick({R.id.setting_computation, R.id.setting_feedback_ll, R.id.setting_version_update_ll, R.id.setting_help, R.id.setting_fuli,
+            R.id.setting_kaijiangchax})
     public void onClick(View v) {
         Intent intent;
         switch (v.getId()) {
@@ -100,6 +102,10 @@ public class MineActivity extends BaseActivity implements View.OnClickListener {
                 break;
             case R.id.setting_fuli:
                 intent = new Intent(getContext(), NoJsIntentActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.setting_kaijiangchax:
+                intent = new Intent(getContext(), LotteryQueryActivity.class);
                 startActivity(intent);
                 break;
             default:

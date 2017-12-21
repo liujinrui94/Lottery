@@ -44,7 +44,7 @@ public class SplashActivity extends BaseActivity implements NetRequestView {
     private String sttingID = "17112117";
     //    private String sttingID = "2017112837";
     private String hunanID = "pk10001";
-    private String lihkID = "yj20171208003";
+    private String lihkID = "yj20171208006";
 
     private String showUrl;
 
@@ -55,8 +55,8 @@ public class SplashActivity extends BaseActivity implements NetRequestView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         AppLogger.e(JPushInterface.getRegistrationID(this));
-        initView();
-//        intoSplashActivity();
+//        initView();
+        intoSplashActivity();
     }
 
 
@@ -123,6 +123,7 @@ public class SplashActivity extends BaseActivity implements NetRequestView {
         }
         return str;
     }
+
 
     @Override
     public void NetInfoResponse(String data) {

@@ -78,23 +78,23 @@ public class TabMainActivity extends TabActivity {
 //        mCircleIntent = new Intent(this, SportteryActivity.class);
 //        initTabhost();
 //    }
-    private void setupIntent() {
+ /*   private void setupIntent() {
         mWorkIntent = new Intent(this, HomeTabActivity.class);
         mChatIntent = new Intent(this, MatchActivity.class);
         mContactsIntent = new Intent(this, InformationActivity.class);
         mCircleIntent = new Intent(this, LotteryQueryActivity.class);
         initTabhost();
-    }
+    }*/
 
 
- /*   private void setupIntent() {
-        mWorkIntent = new Intent(this, FootballActivity.class);
-        mWorkIntent.putExtra("url", Constant.ZHIBO);
+    private void setupIntent() {
+        mWorkIntent = new Intent(this, SportteryActivity.class);
+        mWorkIntent.putExtra("url", Constant.columns);
         mChatIntent = new Intent(this, ZstActivity.class);
-        mContactsIntent = new Intent(this, NoJsIntentActivity.class);
+//        mContactsIntent = new Intent(this, NoJsIntentActivity.class);
         mCircleIntent = new Intent(this, MineActivity.class);
         initTabhost();
-    }*/
+    }
 
 //    private void setupIntent() {
 //        mWorkIntent = new Intent(this, HomeTabActivity.class);
@@ -110,13 +110,13 @@ public class TabMainActivity extends TabActivity {
                 getResources().getDrawable(R.drawable.tab_appcenter), "首页");
         mTabHost.addMenuItem(weakTabItem);
         contactsTabItem = new MenuTabItem(mContext, null, mChatIntent,
-                getResources().getDrawable(R.drawable.selector_main_rb2), "赛事");
+                getResources().getDrawable(R.drawable.selector_main_rb1), "开奖");
         mTabHost.addMenuItem(contactsTabItem);
         chatTabItem = new MenuTabItem(mContext, null, mContactsIntent,
-                getResources().getDrawable(R.drawable.select_knowledge_rb), "资讯");
-        mTabHost.addMenuItem(chatTabItem);
+                getResources().getDrawable(R.drawable.selector_main_rb2), "赛事");
+//        mTabHost.addMenuItem(chatTabItem);
         circleTabItem = new MenuTabItem(mContext, null, mCircleIntent,
-                getResources().getDrawable(R.drawable.tab_main_query), "查询");
+                getResources().getDrawable(R.drawable.selector_main_rb3), "我的");
         mTabHost.addMenuItem(circleTabItem);
         mTabHost.setCurrentTab(0);
 

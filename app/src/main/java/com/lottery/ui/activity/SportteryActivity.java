@@ -21,7 +21,7 @@ import com.tencent.smtt.sdk.WebViewClient;
 public class SportteryActivity extends BaseWebViewActivity {
 
 
-    private String url = "http://www.sporttery.cn/wap/fb/";
+    private String url = "http://www.sporttery.cn/wap/";
 //    private String url = "http://www.sporttery.cn/wap/sz/";
     private String javascript = "javascript:function hideOther() {"
             + "if(document.getElementsByClassName('header')[0] != null) {document.getElementsByClassName('header')[0].style.display = 'none';}"

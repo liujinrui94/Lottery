@@ -12,8 +12,6 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -22,6 +20,8 @@ import android.widget.TextView;
 
 import com.lottery.R;
 import com.lottery.model.NetEventInterface;
+import com.lottery.model.net.BaseNetRetRequestPresenter;
+import com.lottery.model.net.NetRequestView;
 import com.lottery.receiver.NetBroadcastReceiver;
 import com.lottery.utils.AppLogger;
 import com.lottery.widget.BaseProgressDialog;
@@ -41,15 +41,20 @@ public abstract class BaseActivity extends AppCompatActivity implements NetEvent
     private Context context;
     protected AppApplication app;
     @BindView(R.id.top_toolbar)
-     Toolbar toolbar;
+    Toolbar toolbar;
 
     @BindView(R.id.top_toolbar_tv)
-     TextView textTitle;
+    TextView textTitle;
+
+    private String request;
+
+    private int code;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         AppLogger.i(getRunningActivityName(this) + " is running");
-        context=this;
+        context = this;
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         app.getInstance().addActivity(this);
     }
@@ -72,6 +77,23 @@ public abstract class BaseActivity extends AppCompatActivity implements NetEvent
         win.setAttributes(winParams);
     }
 
+   /* @Override
+    public void showCordError(String msg) {
+        showCordError(msg);
+    }
+
+    public void getNetData(String request, int code) {
+        this.request=request;
+        this.code=code;
+        new BaseNetRetRequestPresenter(this).PostNetRetRequest();
+    }
+
+
+
+    @Override
+    public String getPostJsonString() {
+        return request;
+    }*/
 
     public Context getContext() {
         return context;
@@ -88,7 +110,7 @@ public abstract class BaseActivity extends AppCompatActivity implements NetEvent
             toolbar.setNavigationIcon(R.mipmap.ic_arrow_back_white);
         }
         setSupportActionBar(toolbar);
-      toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
@@ -114,6 +136,7 @@ public abstract class BaseActivity extends AppCompatActivity implements NetEvent
         super.setContentView(view, params);
         ButterKnife.bind(this);
     }
+
     private String getRunningActivityName(Context mContext) {
         String contextString = mContext.toString();
         return contextString.substring(contextString.lastIndexOf(".") + 1, contextString.indexOf("@"));
@@ -171,12 +194,12 @@ public abstract class BaseActivity extends AppCompatActivity implements NetEvent
     @Override
     public void onNetChange(int netMobile) {
         this.netMobile = netMobile;
-            isNetConnect();
+        isNetConnect();
     }
 
 
     private void isNetConnect() {
-        if (snackbar == null&&textTitle!=null) {
+        if (snackbar == null && textTitle != null) {
 
             snackbar = SnackBarUtils.indefiniteSnackbar(textTitle, "无网络连接，请检查网络设置");
             switch (netMobile) {

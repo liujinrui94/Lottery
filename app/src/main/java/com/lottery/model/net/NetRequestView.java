@@ -16,4 +16,5 @@ public interface NetRequestView {
 
     void NetInfoResponse(String data);
 
+
 }

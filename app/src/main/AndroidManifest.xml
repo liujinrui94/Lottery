@@ -40,13 +40,9 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".ui.activity.GuideActivity"
-            android:launchMode="singleTask"></activity>
+        <activity android:name=".ui.activity.GuideActivity"></activity>
         <activity android:name=".ui.activity.OfficalNetActivity"></activity>
-        <activity
-            android:name=".ui.activity.TabMainActivity"
-            android:launchMode="singleTask"></activity>
+        <activity android:name=".ui.activity.TabMainActivity"></activity>
         <activity android:name=".ui.OfficalMainActivity"></activity>
         <activity android:name=".ui.activity.FootballActivity"></activity>
         <activity android:name=".ui.activity.WebViewActivity"></activity>
@@ -95,6 +91,7 @@
         <activity android:name=".ui.activity.match.ScoreLiveActivity"></activity>
         <activity android:name=".ui.activity.HomeTabActivity"></activity>
         <activity android:name=".ui.activity.explain.LotteryQueryActivity"></activity>
+        <activity android:name=".ui.TabFrgmentActivity"></activity>
 
         <receiver
             android:name=".receiver.MyReceiver"

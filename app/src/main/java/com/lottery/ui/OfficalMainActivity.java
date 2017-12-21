@@ -44,7 +44,6 @@ public class OfficalMainActivity extends Activity {
             public void onReceivedTitle(WebView view, String title) {
 
             }
-
             //获取加载进度
             @Override
             public void onProgressChanged(WebView view, int newProgress) {
