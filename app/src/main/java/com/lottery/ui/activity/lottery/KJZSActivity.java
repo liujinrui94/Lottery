@@ -23,6 +23,12 @@ public class KJZSActivity extends BaseWebViewActivity {
     private String title = "资讯";
     private Boolean back=false;
 
+    String javascript = "javascript:function hideOther() {"
+            + "if(null!=document.getElementsByClassName('vMod_topBar')[0]){document.getElementsByClassName('vMod_topBar')[0].style.display = 'none';}" +
+            "if(null!=document.getElementsByClassName('vFooter2')[0]){document.getElementsByClassName('vFooter2')[0].style.display = 'none';}" +
+            "if(null!=document.getElementsByClassName('vLottery_info_buttons')[0]){document.getElementsByClassName('vLottery_info_buttons')[0].style.display = 'none';}" +
+            "}";
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +57,8 @@ public class KJZSActivity extends BaseWebViewActivity {
             super.onPageFinished(view, url);
             getWebView().setVisibility(View.VISIBLE);
             progressCancel();
+            view.loadUrl(javascript);
+            view.loadUrl("javascript:hideOther();");
 
         }
     };

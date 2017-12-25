@@ -10,8 +10,8 @@ android {
 
         minSdkVersion 15
         targetSdkVersion 26
-        versionCode 14
-        versionName "1.1.5"
+        versionCode 1
+        versionName "1.0.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         ndk {
             //选择要添加的对应cpu类型的.so库。
@@ -84,13 +84,22 @@ android {
                   icon : "@mipmap/logo_pk10",
                   appname:"北京赛车PK拾"
           ]*/
-     applicationId "com.zixun.ssc"
+//     applicationId "com.chzixun.lottery"
+//        manifestPlaceholders = [
+//                JPUSH_PKGNAME: applicationId, //
+//                JPUSH_APPKEY : "cd32a1fbce8e05dd91a9df4a", //JPush上注册的包名对应的appkey.
+//                JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
+//                icon : "@mipmap/logo_pk10",
+//                appname:"北京赛车"
+//        ]
+
+        applicationId "com.chzixun.mpzs"
         manifestPlaceholders = [
                 JPUSH_PKGNAME: applicationId, //
-                JPUSH_APPKEY : "c27ccbfba1e9026ba69b4174", //JPush上注册的包名对应的appkey.
+                JPUSH_APPKEY : "29717340bb9e735e7583f5fa", //JPush上注册的包名对应的appkey.
                 JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
-                icon : "@mipmap/ic_ssc",
-                appname:"时时彩"
+                icon : "@mipmap/logo_pk10",
+                appname:"PK10助手"
         ]
 
         /*    applicationId "com.liuhe.xinshui"
@@ -129,7 +138,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 //    下拉刷新
-//    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.3'
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.3'
     implementation 'com.android.support:design:26+'
     implementation 'com.zhy:okhttputils:2.6.2'
     implementation 'io.reactivex:rxandroid:1.1.0' // RxAndroid
@@ -137,6 +146,8 @@ dependencies {
     implementation 'com.jakewharton:butterknife:8.4.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
     implementation 'com.google.code.gson:gson:2.8.1'
+    implementation 'com.github.bumptech.glide:glide:3.8.0'
     compile files('libs/tbs_sdk_thirdapp.jar')
-
+    //轮播图
+    compile 'com.jude:rollviewpager:1.4.6'
 }

@@ -34,7 +34,7 @@ public class LocalLotteriesFragment extends BaseFragment {
     @BindView(R.id.fragment_lotteries_web_view)
     WebView webView;
 
-    private String url = "https://vipc.cn/results?in=home_tools_0#other";
+    private String url = "http://zxwap.caipiao.163.com/";
     String javascript = "javascript:function hideOther() {"
             + "if(null!= document.getElementsByClassName('vFooter2')) {document.getElementsByClassName('vFooter2')[0].style.display = 'none';}\n" +
             "if(null!= document.getElementsByClassName('vMod_topBar2')) {document.getElementsByClassName('vMod_topBar2')[0].style.display = 'none';}\n" +

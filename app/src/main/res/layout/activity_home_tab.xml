@@ -4,7 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-<include layout="@layout/top_toolbar"></include>
+
+    <include
+        layout="@layout/top_toolbar"></include>
 
     <android.support.design.widget.TabLayout
         android:id="@+id/activity_home_list_tab_layout"

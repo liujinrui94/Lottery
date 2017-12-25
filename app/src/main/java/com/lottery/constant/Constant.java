@@ -30,6 +30,10 @@ public class Constant {
     public static final String JIANGJINJISUAN = "https://vipc.cn/ssq/calculator?fr=shareToWeixinTimeline";
     //双色球资讯
     public static final String ZHIBO = "https://vipc.cn/lottery/ssq";
+
+    //预测大师
+
+    public static final String DASHI = "https://vipc.cn/columns/digit?in=result_content";
     //开奖
     public static final String WCKAIJIANG = "https://vipc.cn/results?in=home_tools_0#hot";
     //500球类直播

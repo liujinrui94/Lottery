@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="1dp">
+
+
+    <ImageView
+        android:id="@+id/news_rlv_item_iv"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:padding="2dp"
+        android:src="@mipmap/logo_pk10" />
+
+    <TextView
+        android:id="@+id/news_rlv_item_tv_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/news_rlv_item_tv_laiyuan"
+        android:layout_alignBottom="@+id/news_rlv_item_tv_laiyuan"
+        android:layout_toEndOf="@+id/news_rlv_item_iv"
+        android:layout_toRightOf="@+id/news_rlv_item_iv"
+        android:padding="5dp"
+        android:text="@string/app_name" />
+
+    <TextView
+
+        android:id="@+id/news_rlv_item_tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@+id/news_rlv_item_iv"
+        android:layout_toRightOf="@+id/news_rlv_item_iv"
+        android:padding="5dp"
+        android:text="@string/app_name" />
+
+    <TextView
+        android:id="@+id/news_rlv_item_tv_laiyuan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/news_rlv_item_iv"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:padding="5dp"
+        android:text="@string/app_name" />
+
+</RelativeLayout>

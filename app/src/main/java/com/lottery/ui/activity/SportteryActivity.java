@@ -3,12 +3,11 @@ package com.lottery.ui.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 
-import com.lottery.base.BaseWebViewActivity;
-import com.lottery.ui.activity.web.KnowledgeNextActivity;
+import com.lottery.base.BaseWebViewToobarActivity;
+import com.lottery.ui.activity.match.SportteryTwoActivity;
 import com.tencent.smtt.sdk.WebView;
 import com.tencent.smtt.sdk.WebViewClient;
 
@@ -18,33 +17,40 @@ import com.tencent.smtt.sdk.WebViewClient;
  * @time: 2017/12/8 22:07
  * @description:
  */
-public class SportteryActivity extends BaseWebViewActivity {
+public class SportteryActivity extends BaseWebViewToobarActivity {
 
 
     private String url = "http://www.sporttery.cn/wap/";
-//    private String url = "http://www.sporttery.cn/wap/sz/";
+    //    private String url = "http://www.sporttery.cn/wap/sz/";
     private String javascript = "javascript:function hideOther() {"
             + "if(document.getElementsByClassName('header')[0] != null) {document.getElementsByClassName('header')[0].style.display = 'none';}"
             + "if(document.getElementsByClassName('footer')[0] != null) {document.getElementsByClassName('footer')[0].style.display = 'none';}"
+            + "if(document.getElementById('rw_fuzhi') != null) {document.getElementById('rw_fuzhi').style.display = 'none';}"
+            + "if(document.getElementById('_2ad46h5h0ht') != null) {document.getElementById('_2ad46h5h0ht').style.display = 'none';}"
+            + "if(document.getElementsByClassName('headbar')[0] != null) {document.getElementsByClassName('headbar')[0].style.display = 'none';}"
             + "}";
+
+    private String title;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initToolbar("app", this, false);
-        getToolbar().setVisibility(View.GONE);
+        url = getIntent().getStringExtra("url");
+        title = getIntent().getStringExtra("title");
+        initToolbar(title, this, true);
         initWebView(url, client);
     }
 
     private WebViewClient client = new WebViewClient() {
         // 防止加载网页时调起系统浏览器
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            if (url.contains("basketball/info")||url.contains("wap/football/jczj/")) {
+            if (url.equals("https://tools.m.cjcp.com.cn/activity.html")){
                 return true;
             }
-            progressShow();
-            getWebView().setVisibility(View.GONE);
-            view.loadUrl(url);
+            Intent mIntent = new Intent(SportteryActivity.this, SportteryTwoActivity.class);
+            mIntent.putExtra("url", url);
+            mIntent.putExtra("title", "开奖详情");
+            startActivity(mIntent);
             return true;
         }
 

@@ -1,14 +1,11 @@
 package com.lottery.ui.activity.match;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 
 import com.lottery.base.BaseWebViewActivity;
 import com.lottery.constant.Constant;
-import com.lottery.ui.activity.web.ZucaiNextActivity;
 import com.tencent.smtt.sdk.WebView;
 import com.tencent.smtt.sdk.WebViewClient;
 

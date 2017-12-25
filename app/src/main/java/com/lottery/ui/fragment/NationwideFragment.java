@@ -13,7 +13,6 @@ import com.lottery.R;
 import com.lottery.base.BaseFragment;
 import com.lottery.constant.Common;
 import com.lottery.ui.activity.web.RunlotteryActivity;
-import com.lottery.utils.AppLogger;
 import com.tencent.smtt.sdk.WebChromeClient;
 import com.tencent.smtt.sdk.WebSettings;
 import com.tencent.smtt.sdk.WebView;
@@ -59,8 +58,8 @@ public class NationwideFragment extends BaseFragment {
     }
 
     private void initView() {
-        webView.loadUrl(url);
         webView.setVisibility(View.GONE);
+        webView.loadUrl(url);
         webView.getSettings().setUseWideViewPort(true);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setLoadWithOverviewMode(true);
@@ -94,6 +93,7 @@ public class NationwideFragment extends BaseFragment {
         @Override
         public void onPageFinished(WebView view, String url) {
             super.onPageFinished(view, url);
+            webView.setVisibility(View.GONE);
             view.loadUrl(javascript);
             view.loadUrl("javascript:hideOther();");
             webView.setVisibility(View.VISIBLE);
@@ -107,6 +107,7 @@ public class NationwideFragment extends BaseFragment {
             super.onProgressChanged(webView, i);
         }
     };
+
 
 
 }

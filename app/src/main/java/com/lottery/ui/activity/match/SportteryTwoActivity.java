@@ -16,14 +16,14 @@ public class SportteryTwoActivity extends BaseWebViewActivity {
     private String javascript = "javascript:function hideOther() {"
             + "if(document.getElementsByClassName('header')[0] != null) {document.getElementsByClassName('header')[0].style.display = 'none';}"
             + "if(document.getElementsByClassName('footer')[0] != null) {document.getElementsByClassName('footer')[0].style.display = 'none';}"
-            + "}";
+        + "if(document.getElementsByClassName('headbar')[0] != null) {document.getElementsByClassName('headbar')[0].style.display = 'none';}"
+        + "}";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initToolbar("app", this, false);
-        getToolbar().setVisibility(View.GONE);
-        initWebView(getIntent().getStringExtra(SportteryOneActivity.KNOWLEDGE_URL), client);
+        initToolbar(getIntent().getStringExtra("title"), this, true);
+        initWebView(getIntent().getStringExtra("url"), client);
     }
 
     private WebViewClient client = new WebViewClient() {

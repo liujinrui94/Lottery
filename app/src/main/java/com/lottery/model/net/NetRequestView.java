@@ -14,7 +14,9 @@ public interface NetRequestView {
 
     String getPostJsonString();
 
-    void NetInfoResponse(String data);
+    void NetInfoResponse(String data,int code);
+
+    int code();
 
 
 }

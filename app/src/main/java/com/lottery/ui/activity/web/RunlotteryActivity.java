@@ -2,7 +2,6 @@ package com.lottery.ui.activity.web;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.KeyEvent;
@@ -10,9 +9,6 @@ import android.view.View;
 
 import com.lottery.R;
 import com.lottery.base.BaseActivity;
-import com.lottery.ui.activity.FootballActivity;
-import com.lottery.ui.activity.OfficalNetActivity;
-import com.lottery.utils.AppLogger;
 import com.tencent.smtt.sdk.DownloadListener;
 import com.tencent.smtt.sdk.WebChromeClient;
 import com.tencent.smtt.sdk.WebSettings;
@@ -20,7 +16,6 @@ import com.tencent.smtt.sdk.WebView;
 import com.tencent.smtt.sdk.WebViewClient;
 
 import butterknife.BindView;
-import butterknife.OnClick;
 
 /**
  * @author: LiuJinrui
@@ -122,6 +117,17 @@ public class RunlotteryActivity extends BaseActivity implements View.OnClickList
 
     }
 
+
+    //点击返回上一页面而不是退出浏览器
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && webview.canGoBack()) {
+            webview.goBack();
+            return true;
+        }
+
+        return super.onKeyDown(keyCode, event);
+    }
     private class MyWebViewDownLoadListener implements DownloadListener {
         @Override
         public void onDownloadStart(String url, String userAgent, String contentDisposition, String mimetype,

@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout_ll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+
+    <LinearLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_gravity="center_vertical"
+        android:background="@color/orange_E34F1B"
+        android:clickable="true"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/iv_title_imageView"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@mipmap/logo_pk10" />
+
+        <TextView
+            android:id="@+id/nav_header_tv_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="@string/app_name" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/mine_real_name_ll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/home_setting_computation"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/text_black_15dp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="24dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="奖金计算器" />
+
+            <ImageView
+                android:layout_width="12dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="10dp"
+                android:src="@mipmap/ic_arrow_right" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/home_setting_kaijiangchax"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+                style="@style/text_black_15dp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="24dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="开奖查询" />
+
+            <ImageView
+                android:layout_width="12dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="10dp"
+                android:src="@mipmap/ic_arrow_right" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/home_setting_help"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/text_black_15dp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="24dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="帮助中心" />
+
+            <ImageView
+                android:layout_width="12dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="10dp"
+                android:src="@mipmap/ic_arrow_right" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/home_setting_fuli"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+                style="@style/text_black_15dp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="24dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="福利中心" />
+
+            <ImageView
+                android:layout_width="12dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="10dp"
+                android:src="@mipmap/ic_arrow_right" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="8.0dip"
+            android:background="#fff5f5f5" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/text_black_15dp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="24dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="消息推送" />
+
+            <com.lottery.widget.SwitchButton
+                android:id="@+id/home_setting_switchButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp" />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="24dp"
+            android:background="#E8E8E8" />
+
+        <LinearLayout
+            android:id="@+id/home_setting_feedback_ll"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/text_black_15dp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="24dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="意见反馈" />
+
+            <ImageView
+                android:layout_width="12dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="10dp"
+                android:src="@mipmap/ic_arrow_right" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="24dp"
+            android:background="#E8E8E8" />
+
+
+        <LinearLayout
+            android:id="@+id/home_setting_version_update_ll"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/text_black_15dp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="24dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="检查更新" />
+
+
+            <TextView
+                android:id="@+id/tv_mine_setting_versions_info"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.82"
+                android:gravity="right"
+                android:textSize="13sp" />
+
+            <ImageView
+                android:layout_width="12dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="10dp"
+                android:src="@mipmap/ic_arrow_right" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

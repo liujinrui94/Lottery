@@ -30,9 +30,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity"></activity>
-        <activity
-            android:name="com.lottery.SplashActivity"
-            android:theme="@style/AppTheme">
+        <activity android:name="com.lottery.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -64,6 +62,7 @@
         <activity android:name=".ui.activity.match.SportteryTwoActivity"></activity>
 
         <activity android:name=".ui.activity.lottery.InformationActivity"></activity>
+        <activity android:name=".ui.TabFragmentActivity"></activity>
 
         <activity android:name=".ui.activity.lottery.InformationNetxActivity"></activity>
 
@@ -81,6 +80,8 @@
             android:name=".ui.activity.web.KnowledgeNextActivity"
             android:launchMode="singleInstance"></activity>
         <activity android:name=".ui.activity.web.LiveActivity"></activity>
+
+        <activity android:name=".ui.NewsInfoActivity.NewsInfoActivity"></activity>
 
         <activity android:name=".ui.activity.SportteryActivity"></activity>
         <activity android:name=".ui.activity.match.MatchActivity"></activity>

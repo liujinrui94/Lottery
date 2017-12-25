@@ -21,7 +21,7 @@ public class BaseNetRetRequestPresenter {
                 baseModeImp.postBaseNetRequestModel(netRequestView.getPostJsonString(), new BaseNetRequestCallBack() {
                     @Override
                     public void SucceedCallBack(String data) {
-                        netRequestView.NetInfoResponse(data);
+                        netRequestView.NetInfoResponse(data,netRequestView.code());
                     }
 
                     @Override
